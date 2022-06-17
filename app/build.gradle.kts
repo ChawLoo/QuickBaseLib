@@ -37,6 +37,6 @@ android {
 }
 
 dependencies {
-    implementation(project(":module-base"))
+    implementation(project(":QuickBaseLib"))
     testImplementation(libs.junit)
 }

@@ -30,4 +30,4 @@ dependencyResolutionManagement {
 rootProject.name = "QuickBaseLib"
 enableFeaturePreview("VERSION_CATALOGS")
 include(":app")
-include(":module-base")
+include(":QuickBaseLib")
