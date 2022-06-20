@@ -1,14 +1,8 @@
 plugins {
     id("com.android.library")
     kotlin("android")
-    kotlin("kapt")
     `maven-publish`
     signing
-}
-kapt {
-    arguments {
-        arg("AROUTER_MODULE_NAME", "update")
-    }
 }
 android {
     compileSdk = libs.versions.compileSdk.get().toInt()
@@ -62,7 +56,6 @@ dependencies {
     api(libs.brv)
     api(libs.jodatime)
     api(libs.arouter.api)
-    kapt(libs.arouter.compiler)
     api(libs.androidautosize)
     api(libs.basePopup)
     api(libs.toast)
@@ -72,10 +65,10 @@ dependencies {
     api(libs.retrofit)
     api(libs.permissionx)
     api(libs.mmkv)
-    api(libs.multistatepage)
     api(libs.viewbinding.ktx)
     api(libs.jodatime)
     api(libs.wechat.sdk.android.without.mta)
+    api(libs.stateLayout)
 
     api(libs.bundles.coil)
     api(libs.bundles.saf.log)
@@ -97,7 +90,7 @@ publishing {
         create<MavenPublication>("maven") {
             groupId = "io.github.chawloo"
             artifactId = "QuickBaseLib"
-            version = "1.0.1"
+            version = "1.0.2"
             artifact("$buildDir/outputs/aar/${project.name}-release.aar")
             artifact(androidSourcesJar)
             pom {
