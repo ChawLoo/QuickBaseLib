@@ -28,15 +28,15 @@ import com.safframework.log.L
  *          └─┴─┘   └─┴─┘
  *─────────────神兽出没───────────────/
  */
-fun StateLayout?.showLoading(msg: String = "请稍等") {
+fun StateLayout?.loading(msg: String = "请稍等") {
     this?.showLoading(msg)
 }
 
-fun StateLayout?.showSuccess() {
+fun StateLayout?.content() {
     this?.showContent()
 }
 
-fun StateLayout?.showEmpty(
+fun StateLayout?.empty(
     emptyMsg: String = "暂无数据",
     retryMsg: String = "重新加载",
     retry: () -> Unit = { L.e("点击了重试,但是没有事件") }
@@ -50,7 +50,7 @@ fun StateLayout?.showEmpty(
     }
 }
 
-fun StateLayout?.showError(
+fun StateLayout?.error(
     msg: String = "发生错误",
     retryMsg: String = "重新加载",
     retry: (() -> Unit)? = null
