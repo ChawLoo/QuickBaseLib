@@ -33,10 +33,13 @@ import org.koin.core.component.KoinComponent
 abstract class BaseViewModel : ViewModel(), KoinComponent {
     private val _viewEvents: SingleLiveEvent<PageEvent> = SingleLiveEvent()
     val event = _viewEvents.asLiveData()
+
+    @Deprecated("直接用Toast里面的#toast(String),top-level函数就行了")
     protected fun showToast(msg: String?) {
         _viewEvents.setEvent(PageEvent.ShowToast(msg))
     }
 
+    @Deprecated("直接用Toast里面的#toast(String),top-level函数就行了")
     protected fun showToast(t: Throwable) {
         _viewEvents.setEvent(PageEvent.ShowToast(t.message))
     }

@@ -38,6 +38,7 @@ sealed class PageState<out T> {
 }
 
 sealed class PageEvent {
+    @Deprecated("直接用Toast里面的#toast(String),top-level函数就行了")
     data class ShowToast(val msg: String?) : PageEvent()
     object ShowLoading : PageEvent()
     object HideLoading : PageEvent()
