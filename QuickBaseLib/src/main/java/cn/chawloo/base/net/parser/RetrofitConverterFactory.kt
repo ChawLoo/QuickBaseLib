@@ -1,6 +1,7 @@
 package cn.chawloo.base.net.parser
 
 import cn.chawloo.base.ext.json
+import kotlinx.serialization.json.Json
 import okhttp3.MediaType
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.RequestBody
@@ -35,7 +36,8 @@ import java.lang.reflect.Type
 class RetrofitConverterFactory private constructor(private val contentType: MediaType, private val serializer: Serializer) : Converter.Factory() {
     companion object {
         private val MEDIA_TYPE = "application/json; charset=UTF-8".toMediaType()
-        fun create(contentType: MediaType = MEDIA_TYPE): RetrofitConverterFactory = RetrofitConverterFactory(contentType, Serializer.FromString(json))
+        fun create(contentType: MediaType = MEDIA_TYPE, jsonSerialization: Json = json): RetrofitConverterFactory =
+            RetrofitConverterFactory(contentType, Serializer.FromString(jsonSerialization))
     }
 
     override fun responseBodyConverter(type: Type, annotations: Array<out Annotation>, retrofit: Retrofit): Converter<ResponseBody, *> =

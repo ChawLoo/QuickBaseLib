@@ -70,7 +70,6 @@ dependencies {
     api(libs.viewbinding.ktx)
     api(libs.jodatime)
     api(libs.wechat.sdk.android.without.mta)
-    api(libs.stateLayout)
     api(libs.wheelView)
     api(libs.x5webview)
 
@@ -94,7 +93,7 @@ publishing {
         create<MavenPublication>("maven") {
             groupId = "io.github.chawloo"
             artifactId = "QuickBaseLib"
-            version = "1.0.5"
+            version = "1.0.6"
             artifact("$buildDir/outputs/aar/${project.name}-release.aar")
             artifact(androidSourcesJar)
             pom {
