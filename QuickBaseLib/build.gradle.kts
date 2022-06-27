@@ -93,7 +93,7 @@ publishing {
         create<MavenPublication>("maven") {
             groupId = "io.github.chawloo"
             artifactId = "QuickBaseLib"
-            version = "1.0.7"
+            version = "1.0.7-fix"
             artifact("$buildDir/outputs/aar/${project.name}-release.aar")
             artifact(androidSourcesJar)
             pom {

@@ -21,7 +21,7 @@ class CommonConfirmPopupWindow(context: Context) : BasePopupWindow(context) {
         this.update()
     }
 
-    fun setCancel(cancelText: String?, cancelAction: (() -> Unit)?) {
+    fun setCancel(cancelText: String?, cancelAction: (() -> Unit)? = null) {
         cancelText?.takeIf { it.isNotBlank() }?.run {
             findViewById<TextView>(R.id.tv_cancel).apply {
                 text = cancelText
@@ -75,7 +75,7 @@ class CommonConfirmPopupWindow(context: Context) : BasePopupWindow(context) {
             return this
         }
 
-        fun cancel(cancelText: String?, cancelAction: (() -> Unit)?): Builder {
+        fun cancel(cancelText: String?, cancelAction: (() -> Unit)? = null): Builder {
             this.cancelText = cancelText
             this.cancelAction = cancelAction
             return this
