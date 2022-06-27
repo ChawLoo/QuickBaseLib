@@ -2,4 +2,14 @@
 <resources>
     <color name="bg_color">#FFFFFF</color>
     <color name="divider_color">#eeeeee</color>
+    <color name="black">#000000</color> <!-- 黑色 -->
+    <color name="theme_color">#569ef8</color>
+    <color name="color_f3">#f3f3f3</color>
+    <color name="color_ea">#eaeaea</color>
+    <color name="color_aa">#aaaaaa</color>
+    <color name="color_99">#999999</color>
+    <color name="color_66">#666666</color>
+    <color name="color_55">#555555</color>
+    <color name="color_33">#333333</color>
+    <color name="color_30">#303030</color>
 </resources>

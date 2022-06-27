@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="20dp"
+    android:background="@drawable/pop_white_bg"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="经营范围"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="5dp"
+            android:padding="10dp"
+            android:src="@drawable/ic_close" />
+    </RelativeLayout>
+
+    <View style="@style/divider_horizontal" />
+
+    <TextView
+        android:id="@+id/tv_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fadeScrollbars="false"
+        android:maxLines="10"
+        android:padding="10dp"
+        android:text="\u3000\u3000景观和绿地施工工程方撒打发斯蒂芬手动阀是大法师的发景观和绿地施工工程方撒打发斯蒂芬手动阀是大法师的发景观和绿地施工工程方撒打发斯蒂芬手动阀是大法师的发景观和绿地施工工程方撒打发斯蒂芬手动阀是大法师的发景观和绿地施工工程方撒打发斯蒂芬手动阀是大法师的发景观和绿地施工工程方撒打发斯蒂芬手动阀是大法师的发景观和绿地施工工程方撒打发斯蒂芬手动阀是大法师的发景观和绿地施工工程方撒打发斯蒂芬手动阀是大法师的发景观和绿地施工工程方撒打发斯蒂芬手动阀是大法师的发景观和绿地施工工程方撒打发斯蒂芬手动阀是大法师的发景观和绿地施工工程方撒打发斯蒂芬手动阀是大法师的发景观和绿地施工工程方撒打发斯蒂芬手动阀是大法师的发景观和绿地施工工程方撒打发斯蒂芬手动阀是大法师的发景观和绿地施工工程方撒打发斯蒂芬手动阀是大法师的发"
+        android:textColor="#888888"
+        android:textSize="14sp" />
+</LinearLayout>
