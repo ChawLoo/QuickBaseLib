@@ -29,7 +29,7 @@ import com.safframework.log.L
  */
 class LogInitializer : Initializer<Unit> {
     override fun create(context: Context) {
-        L.init("DingGc")
+        L.init("ChawLoo")
         L.displayThreadInfo(false)
     }
 

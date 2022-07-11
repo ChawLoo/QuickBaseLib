@@ -6,6 +6,7 @@ import android.util.AttributeSet
 import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.annotation.DrawableRes
+import androidx.appcompat.widget.AppCompatTextView
 import cn.chawloo.base.R
 import cn.chawloo.base.databinding.TitleBarBinding
 import cn.chawloo.base.ext.*
@@ -43,6 +44,7 @@ class TitleBar @JvmOverloads constructor(context: Context, attrs: AttributeSet? 
     }
 
     private var vb: TitleBarBinding = TitleBarBinding.bind(inflate(context, R.layout.title_bar, this))
+
     var title = ""
         set(value) {
             vb.tvTitle.text = value
@@ -50,12 +52,14 @@ class TitleBar @JvmOverloads constructor(context: Context, attrs: AttributeSet? 
             field = value
             setActTitle()
         }
+
     var actionTxt = ""
         set(value) {
             vb.tvAction.text = value
             value.takeIf { it.isBlank() }?.run { vb.tvAction.gone() } ?: vb.tvAction.visible()
             field = value
         }
+
     var bgColor = Color.TRANSPARENT
         set(value) {
             vb.rlTitleBarContainer.setBackgroundColor(value)
@@ -81,6 +85,10 @@ class TitleBar @JvmOverloads constructor(context: Context, attrs: AttributeSet? 
                 }
             }
         }
+
+    fun getBackView(): AppCompatTextView {
+        return vb.tvBack
+    }
 
     fun setActionClick(click: OnClickListener) {
         vb.tvAction.doClick {
