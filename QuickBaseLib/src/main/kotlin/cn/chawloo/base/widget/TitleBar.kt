@@ -7,6 +7,7 @@ import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.annotation.DrawableRes
 import androidx.appcompat.widget.AppCompatTextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import cn.chawloo.base.R
 import cn.chawloo.base.databinding.TitleBarBinding
 import cn.chawloo.base.ext.*
@@ -34,7 +35,7 @@ import cn.chawloo.base.ext.*
  *          └─┴─┘   └─┴─┘
  *─────────────神兽出没───────────────/
  */
-class TitleBar @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleRes: Int = -1) : RelativeLayout(context, attrs, defStyleRes) {
+class TitleBar @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleRes: Int = -1) : ConstraintLayout(context, attrs, defStyleRes) {
     companion object {
         //字体颜色为白色
         const val DARK_MODE = 1

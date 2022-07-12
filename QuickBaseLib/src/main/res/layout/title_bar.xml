@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/rl_title_bar_container"
     android:layout_width="match_parent"
@@ -17,15 +18,14 @@
         android:paddingStart="16dp"
         android:paddingTop="10dp"
         android:paddingEnd="10dp"
-        android:paddingBottom="10dp" />
+        android:paddingBottom="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_title"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_centerInParent="true"
-        android:layout_toStartOf="@id/tv_action"
-        android:layout_toEndOf="@id/tv_back"
         android:gravity="center"
         android:maxLength="12"
         android:paddingStart="12dp"
@@ -33,6 +33,9 @@
         android:singleLine="true"
         android:textColor="@android:color/black"
         android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/tv_action"
+        app:layout_constraintStart_toEndOf="@id/tv_title"
         tools:text="标题" />
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -45,9 +48,15 @@
         android:paddingEnd="10dp"
         android:text="完成"
         android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:visibility="visible" />
 
     <View
         style="@style/divider_horizontal"
-        android:layout_alignParentBottom="true" />
-</RelativeLayout>
+        android:layout_width="0dp"
+        android:layout_alignParentBottom="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
