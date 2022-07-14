@@ -45,7 +45,6 @@ class TitleBar @JvmOverloads constructor(context: Context, attrs: AttributeSet? 
     }
 
     private var vb: TitleBarBinding = TitleBarBinding.bind(inflate(context, R.layout.title_bar, this))
-
     var title = ""
         set(value) {
             vb.tvTitle.text = value
@@ -109,6 +108,7 @@ class TitleBar @JvmOverloads constructor(context: Context, attrs: AttributeSet? 
         val ta = context.obtainStyledAttributes(attrs, R.styleable.TitleBar)
         title = ta.getString(R.styleable.TitleBar_android_title) ?: ""
         actionTxt = ta.getString(R.styleable.TitleBar_actionTxt) ?: ""
+        val forceShowBack = ta.getBoolean(R.styleable.TitleBar_forceShowBack, false)
         bgColor = ta.getColor(R.styleable.TitleBar_android_background, Color.TRANSPARENT)
         title.takeIf { it.isNotBlank() }?.run {
             vb.tvTitle.text = title
@@ -120,7 +120,7 @@ class TitleBar @JvmOverloads constructor(context: Context, attrs: AttributeSet? 
         isDarkMode = ta.getInt(R.styleable.TitleBar_lightText, DARK_MODE)
         ta.recycle()
         setActTitle()
-        activityList.takeIf { it.size < 2 || firstActivity == context.activity }?.run {
+        activityList.takeIf { (it.size < 2 || firstActivity == context.activity) && !forceShowBack }?.run {
             vb.tvBack.gone()
         } ?: vb.tvBack.visible()
     }

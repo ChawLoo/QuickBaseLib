@@ -312,6 +312,7 @@
     <declare-styleable name="TitleBar">
         <attr name="android:title" format="string" />
         <attr name="actionTxt" format="string" />
+        <attr name="forceShowBack" format="boolean" />
         <attr name="lightText" format="enum">
             <enum name="no" value="0" />
             <enum name="yes" value="1" />

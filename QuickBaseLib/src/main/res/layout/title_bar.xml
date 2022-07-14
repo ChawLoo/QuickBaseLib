@@ -24,7 +24,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_title"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="match_parent"
         android:gravity="center"
         android:maxLength="12"
@@ -35,7 +35,7 @@
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintEnd_toStartOf="@id/tv_action"
-        app:layout_constraintStart_toEndOf="@id/tv_title"
+        app:layout_constraintStart_toEndOf="@id/tv_back"
         tools:text="标题" />
 
     <androidx.appcompat.widget.AppCompatTextView
