@@ -47,7 +47,7 @@ fun StateLayout?.empty(
         findViewById<TextView>(R.id.btn_retry).setOnClickListener {
             retry()
         }
-    }
+    }?.showError()
 }
 
 fun StateLayout?.error(
@@ -61,5 +61,5 @@ fun StateLayout?.error(
         findViewById<TextView>(R.id.btn_retry).setOnClickListener {
             retry?.invoke()
         }
-    }
+    }?.showError()
 }
