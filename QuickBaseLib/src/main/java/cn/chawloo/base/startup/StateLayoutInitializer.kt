@@ -8,7 +8,7 @@ import com.drake.statelayout.StateConfig
 class StateLayoutInitializer : Initializer<Unit> {
     override fun create(context: Context) {
         StateConfig.apply {
-            emptyLayout = R.layout.custom_error_view
+            emptyLayout = R.layout.custom_empty_view
             loadingLayout = R.layout.custom_loading_view
             errorLayout = R.layout.custom_error_view
             setRetryIds(R.id.btn_retry)

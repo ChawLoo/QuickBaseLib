@@ -31,6 +31,5 @@ val Float.sp: Float
 fun Context.isDarkMode(): Boolean {
     val uiModeManager: UiModeManager = getSystemService(Context.UI_MODE_SERVICE) as UiModeManager
     val isNight = uiModeManager.nightMode == UiModeManager.MODE_NIGHT_YES
-    L.e("是否是黑夜模式:$isNight")
     return isNight
 }

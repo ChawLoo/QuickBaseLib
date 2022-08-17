@@ -1,6 +1,8 @@
 package cn.chawloo.base.ext
 
+import android.widget.ImageView
 import android.widget.TextView
+import androidx.annotation.DrawableRes
 import cn.chawloo.base.R
 import com.drake.statelayout.StateLayout
 import com.safframework.log.L
@@ -36,30 +38,32 @@ fun StateLayout?.content() {
     this?.showContent()
 }
 
-fun StateLayout?.empty(
-    emptyMsg: String = "暂无数据",
-    retryMsg: String = "重新加载",
-    retry: () -> Unit = { L.e("点击了重试,但是没有事件") }
-) {
-    this?.onError {
-        findViewById<TextView>(R.id.status_hint_content).text = emptyMsg
-        findViewById<TextView>(R.id.btn_retry).text = retryMsg
-        findViewById<TextView>(R.id.btn_retry).setOnClickListener {
-            retry()
+fun StateLayout?.empty(emptyMsg: String = "暂无数据", @DrawableRes iconId: Int? = null) {
+    this?.onEmpty {
+        iconId?.run {
+            findViewById<ImageView>(R.id.empty_view_icon).setImageResource(iconId)
         }
-    }?.showError()
+        findViewById<TextView>(R.id.status_hint_content).text = emptyMsg
+    }?.showEmpty()
 }
 
 fun StateLayout?.error(
     msg: String = "发生错误",
     retryMsg: String = "重新加载",
+    @DrawableRes iconId: Int? = null,
     retry: (() -> Unit)? = null
 ) {
     this?.onError {
+        iconId?.run {
+            findViewById<ImageView>(R.id.error_view_icon).setImageResource(iconId)
+        }
         findViewById<TextView>(R.id.status_hint_content).text = msg
-        findViewById<TextView>(R.id.btn_retry).text = retryMsg
-        findViewById<TextView>(R.id.btn_retry).setOnClickListener {
-            retry?.invoke()
+        findViewById<TextView>(R.id.btn_retry).apply {
+            text = retryMsg
+            doClick {
+                retry?.invoke()
+            }
+            visible()
         }
     }?.showError()
 }

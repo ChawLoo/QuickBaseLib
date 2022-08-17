@@ -25,7 +25,7 @@ object AopClickUtil {
      * @param intervalMillis  时间间期（毫秒）
      * @return  true:是，false:不是
      */
-    fun isFastDoubleClick(v: View, intervalMillis: Long): Boolean {
+    fun isFastDoubleClick(v: View, intervalMillis: Int): Boolean {
         val viewId: Int = v.id
         val time = System.currentTimeMillis()
         val timeInterval = abs(time - mLastClickTime)

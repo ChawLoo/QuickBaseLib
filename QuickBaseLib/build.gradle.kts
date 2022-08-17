@@ -4,6 +4,7 @@ plugins {
     `maven-publish`
     signing
 }
+
 android {
     compileSdk = libs.versions.compileSdk.get().toInt()
 
@@ -81,7 +82,6 @@ dependencies {
     testImplementation(libs.junit)
 }
 
-
 val androidSourcesJar = task<Jar>("androidSourcesJar") {
     archiveClassifier.set("sources")
     from(android.sourceSets["main"].java.srcDirs)
@@ -90,12 +90,12 @@ val androidSourcesJar = task<Jar>("androidSourcesJar") {
 }
 
 publishing {
+    val ver = "1.1.5"
     publications {
         create<MavenPublication>("maven") {
             groupId = "io.github.chawloo"
             artifactId = "QuickBaseLib"
-            version = "1.1.2"
-            artifact("$buildDir/outputs/aar/${project.name}-release.aar")
+            version = ver
             artifact(androidSourcesJar)
             pom {
                 name.set("QuickBaseLib")
@@ -159,8 +159,8 @@ publishing {
     repositories {
         maven {
             val releaseRepoUrl = uri("https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/")
-            val snapshotRepoUrl = uri("https://s01.oss.sonatype.org/content/repositories/snapshots/")
-            url = if (version.toString().endsWith("SNAPSHOT")) {
+            val snapshotRepoUrl = uri("https://s01.oss.sonatype.org/content/repositories/snapshots")
+            url = if (ver.endsWith("SNAPSHOT")) {
                 snapshotRepoUrl
             } else {
                 releaseRepoUrl

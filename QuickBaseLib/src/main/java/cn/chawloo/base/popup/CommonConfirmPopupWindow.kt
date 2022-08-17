@@ -28,13 +28,11 @@ class CommonConfirmPopupWindow(context: Context) : BasePopupWindow(context) {
                 visible()
             }
             findViewById<View>(R.id.v_line).visible()
-            cancelAction?.run {
-                findViewById<TextView>(R.id.tv_cancel).setOnClickListener {
-                    dismiss()
-                    this()
-                }
-            }
             this@CommonConfirmPopupWindow.update()
+        }
+        findViewById<TextView>(R.id.tv_cancel).setOnClickListener {
+            dismiss()
+            cancelAction?.invoke()
         }
     }
 

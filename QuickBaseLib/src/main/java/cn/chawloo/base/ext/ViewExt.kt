@@ -8,6 +8,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import androidx.fragment.app.Fragment
+import cn.chawloo.base.base.BaseLibConfig
 import cn.chawloo.base.event.AopClickUtil
 import com.safframework.log.L
 import kotlin.properties.ReadWriteProperty
@@ -101,7 +102,7 @@ fun TextView.clear() {
 }
 
 
-fun Activity.setClickViews(vararg views: View, singleTime: Long = 300, onClick: (View) -> Unit) {
+fun Activity.setClickViews(vararg views: View, singleTime: Int = BaseLibConfig.clickIntervals, onClick: (View) -> Unit) {
     views.forEach { v ->
         v.setOnClickListener {
             if (!AopClickUtil.isFastDoubleClick(it, singleTime)) {
@@ -115,7 +116,7 @@ fun Activity.setClickViews(vararg views: View, singleTime: Long = 300, onClick: 
     }
 }
 
-fun Fragment.setClickViews(vararg views: View, singleTime: Long = 300, onClick: (View) -> Unit) {
+fun Fragment.setClickViews(vararg views: View, singleTime: Int = BaseLibConfig.clickIntervals, onClick: (View) -> Unit) {
     views.forEach { v ->
         v.setOnClickListener {
             if (!AopClickUtil.isFastDoubleClick(it, singleTime)) {
@@ -129,14 +130,14 @@ fun Fragment.setClickViews(vararg views: View, singleTime: Long = 300, onClick: 
     }
 }
 
-fun <T : View> List<T>.doClick(clickIntervals: Int = 2000, isSharingIntervals: Boolean = false, block: T.() -> Unit) =
+fun <T : View> List<T>.doClick(clickIntervals: Int = BaseLibConfig.clickIntervals, isSharingIntervals: Boolean = false, block: T.() -> Unit) =
     forEach { it.doClick(clickIntervals, isSharingIntervals, block) }
 
-fun <T : View> T.doClick(clickIntervals: Int = 2000, isSharingIntervals: Boolean = false, block: T.() -> Unit) = setOnClickListener {
+fun <T : View> T.doClick(clickIntervals: Int = BaseLibConfig.clickIntervals, isSharingIntervals: Boolean = false, block: T.() -> Unit) = setOnClickListener {
     this.context.activity?.hideSoftKeyboard()
     val view = if (isSharingIntervals) context.activity?.window?.decorView ?: this else this
     val currentTime = System.currentTimeMillis()
-    val lastTime = view.lastClickTime ?: 0L
+    val lastTime = view.lastClickTime ?: 0
     if (currentTime - lastTime > clickIntervals) {
         view.lastClickTime = currentTime
         block()

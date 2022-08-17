@@ -81,6 +81,10 @@ fun TextView.addUnderline() {
     paint.flags = Paint.UNDERLINE_TEXT_FLAG
 }
 
+fun TextView.addDeleteLine() {
+    paint.flags = Paint.STRIKE_THRU_TEXT_FLAG
+}
+
 fun TextView.transparentHighlightColor() {
     highlightColor = Color.TRANSPARENT
 }
