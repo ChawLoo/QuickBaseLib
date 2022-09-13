@@ -23,7 +23,7 @@ dependencyResolutionManagement {
     }
     versionCatalogs {
         create("libs") {
-            from("io.github.chawloo:VersionControlPlugin:1.1.1")
+            from("io.github.chawloo:VersionControlPlugin:1.1.2")
         }
     }
 }

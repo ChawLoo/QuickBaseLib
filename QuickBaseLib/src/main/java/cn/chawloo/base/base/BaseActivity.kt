@@ -155,7 +155,7 @@ abstract class BaseActivity : AppCompatActivity() {
 
     override fun getResources(): Resources {
         if (Looper.myLooper() == Looper.getMainLooper()) {
-            AutoSizeCompat.autoConvertDensityOfGlobal(super.getResources())
+//            AutoSizeCompat.autoConvertDensityOfGlobal(super.getResources())
         }
         return super.getResources()
     }

@@ -2,6 +2,7 @@ package cn.chawloo.base.mvi
 
 import androidx.lifecycle.ViewModel
 import cn.chawloo.base.mvi.event.SingleLiveEvent
+import cn.chawloo.base.mvi.event.SingleLiveEvents
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onCompletion
@@ -31,18 +32,8 @@ import org.koin.core.component.KoinComponent
  *─────────────神兽出没───────────────/
  */
 abstract class BaseViewModel : ViewModel(), KoinComponent {
-    private val _viewEvents: SingleLiveEvent<PageEvent> = SingleLiveEvent()
+    private val _viewEvents = SingleLiveEvents<PageEvent>()
     val event = _viewEvents.asLiveData()
-
-    @Deprecated("直接用Toast里面的#toast(String),top-level函数就行了")
-    protected fun showToast(msg: String?) {
-        _viewEvents.setEvent(PageEvent.ShowToast(msg))
-    }
-
-    @Deprecated("直接用Toast里面的#toast(String),top-level函数就行了")
-    protected fun showToast(t: Throwable) {
-        _viewEvents.setEvent(PageEvent.ShowToast(t.message))
-    }
 
     protected fun hideLoading() {
         _viewEvents.setEvent(PageEvent.HideLoading)
