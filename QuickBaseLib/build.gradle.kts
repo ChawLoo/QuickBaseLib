@@ -66,7 +66,7 @@ dependencies {
     api(libs.koin.annotations)
     api(libs.okhttp)
     api(libs.retrofit)
-    api(libs.permissionx)
+    api(libs.xPermission)
     api(libs.mmkv)
     api(libs.viewbinding.ktx)
     api(libs.jodatime)
@@ -90,7 +90,7 @@ val androidSourcesJar = task<Jar>("androidSourcesJar") {
 }
 
 publishing {
-    val ver = "1.1.6-fix2"
+    val ver = "1.1.7"
     publications {
         create<MavenPublication>("maven") {
             groupId = "io.github.chawloo"

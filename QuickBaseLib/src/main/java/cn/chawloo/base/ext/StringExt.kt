@@ -1,12 +1,10 @@
-package cn.chawloo.base.base
+package com.zhong360.base.ext
 
-import android.app.Application
-import android.content.Context
-import androidx.multidex.MultiDex
+import java.util.regex.Pattern
 
 /**
- * Application基类
- * @author Create by 鲁超 on 2022/6/7 0007 14:17:06
+ * TODO
+ * @author Create by 鲁超 on 2021/04/10/0010 20:41
  *----------Dragon be here!----------/
  *       ┌─┐      ┌─┐
  *     ┌─┘─┴──────┘─┴─┐
@@ -27,9 +25,12 @@ import androidx.multidex.MultiDex
  *          └─┴─┘   └─┴─┘
  *─────────────神兽出没───────────────/
  */
-open class BaseApp : Application() {
-    override fun attachBaseContext(base: Context?) {
-        super.attachBaseContext(base)
-        MultiDex.install(this)
+
+fun String?.isMobile(): Boolean {
+    if (isNullOrBlank()) {
+        return false
     }
+    val regMobile = "^(1[3-9][0-9])\\d{8}$"
+    val regexMobile = Pattern.compile(regMobile)
+    return regexMobile.matcher(this).matches()
 }

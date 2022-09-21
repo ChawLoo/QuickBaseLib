@@ -9,8 +9,7 @@ import cn.chawloo.base.ext.activityCache
 import cn.chawloo.base.ext.application
 import cn.chawloo.base.ext.doOnActivityLifecycle
 
-internal class AppInitializer : Initializer<Unit> {
-
+class AppInitializer : Initializer<Unit> {
     override fun create(context: Context) {
         application = context as Application
         application.doOnActivityLifecycle(
