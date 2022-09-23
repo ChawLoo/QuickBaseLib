@@ -138,7 +138,7 @@ class CommonTabLayout @JvmOverloads constructor(context: Context, attrs: Attribu
     private val mLastP = IndicatorPoint()
 
     private var mFragmentChangeManager: FragmentChangeManager? = null
-    var mListener: OnTabSelectListener? = null
+    private var mListener: OnTabSelectListener? = null
 
     init {
         setWillNotDraw(false)//重写onDraw方法，需要调用这个方法清除Flag
@@ -202,8 +202,8 @@ class CommonTabLayout @JvmOverloads constructor(context: Context, attrs: Attribu
         ta.recycle()
     }
 
-    fun setTabData(tabEntities: ArrayList<CustomTabEntity>?) {
-        if (tabEntities.isNullOrEmpty()) {
+    fun setTabData(tabEntities: List<CustomTabEntity>) {
+        if (tabEntities.isEmpty()) {
             throw IllegalStateException("TabEntities can not be NULL or EMPTY !")
         }
         this.mTabEntities.clear()
@@ -214,7 +214,7 @@ class CommonTabLayout @JvmOverloads constructor(context: Context, attrs: Attribu
     /**
      * 关联数据支持同时切换fragments
      */
-    fun setTabData(tabEntities: ArrayList<CustomTabEntity>?, fa: FragmentActivity, containerViewId: Int, fragments: List<Fragment>) {
+    fun setTabData(tabEntities: List<CustomTabEntity>, fa: FragmentActivity, containerViewId: Int, fragments: List<Fragment>) {
         mFragmentChangeManager = FragmentChangeManager(fa.supportFragmentManager, containerViewId, fragments)
         setTabData(tabEntities)
     }
