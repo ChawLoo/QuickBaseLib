@@ -7,6 +7,8 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import cn.chawloo.base.R
+import cn.chawloo.base.databinding.ItemSimpleBottomListBinding
+import cn.chawloo.base.databinding.PopSimpleBottomListBinding
 import cn.chawloo.base.ext.dp
 import com.drake.brv.utils.divider
 import com.drake.brv.utils.linear
@@ -29,8 +31,10 @@ class BottomListPickerPopupWindow(context: Context, dataList: List<String>, pick
             .linear()
             .divider(R.drawable.shape_rv_h_divider_1_dp)
             .setup {
+                addType<String>(R.layout.item_simple_bottom_list)
                 onBind {
-                    findView<TextView>(R.id.tv_value).text = getModel<String>()
+                    val binding = ItemSimpleBottomListBinding.bind(itemView)
+                    binding.tvValue.text = getModel<String>()
                     itemView.background = when (layoutPosition) {
                         0 -> ContextCompat.getDrawable(context, R.drawable.shape_list_corner_white_bg)
                         dataList.size - 1 -> ContextCompat.getDrawable(context, R.drawable.shape_list_corner_white_bg)

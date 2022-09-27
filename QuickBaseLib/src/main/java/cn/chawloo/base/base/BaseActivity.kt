@@ -1,6 +1,5 @@
 package cn.chawloo.base.base
 
-import android.app.Activity
 import android.content.pm.ActivityInfo
 import android.content.res.Resources
 import android.content.res.TypedArray
@@ -14,8 +13,6 @@ import cn.chawloo.base.event.AntiShake
 import cn.chawloo.base.popup.LoadingPop
 import cn.chawloo.base.router.Router
 import com.gyf.immersionbar.ktx.immersionBar
-import com.hjq.toast.ToastUtils
-import me.jessyan.autosize.AutoSizeCompat
 import razerdp.basepopup.BasePopupWindow
 
 /**

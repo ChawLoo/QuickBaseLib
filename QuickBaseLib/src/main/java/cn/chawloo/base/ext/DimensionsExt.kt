@@ -1,11 +1,6 @@
 package cn.chawloo.base.ext
 
-import android.app.UiModeManager
-import android.content.Context
-import cn.chawloo.base.base.BaseApp
-import com.safframework.log.L
 import me.jessyan.autosize.utils.AutoSizeUtils
-import org.koin.java.KoinJavaComponent.get
 
 /**
  * Dp换算
@@ -13,23 +8,17 @@ import org.koin.java.KoinJavaComponent.get
  */
 val Int.dp: Int
     get() {
-        return AutoSizeUtils.dp2px(get<BaseApp>(BaseApp::class.java), this.toFloat())
+        return AutoSizeUtils.dp2px(application, this.toFloat())
     }
 val Float.dp: Float
     get() {
-        return AutoSizeUtils.dp2px(get<BaseApp>(BaseApp::class.java), this).toFloat()
+        return AutoSizeUtils.dp2px(application, this).toFloat()
     }
 val Int.sp: Int
     get() {
-        return AutoSizeUtils.sp2px(get<BaseApp>(BaseApp::class.java), this.toFloat())
+        return AutoSizeUtils.sp2px(application, this.toFloat())
     }
 val Float.sp: Float
     get() {
-        return AutoSizeUtils.sp2px(get<BaseApp>(BaseApp::class.java), this).toFloat()
+        return AutoSizeUtils.sp2px(application, this).toFloat()
     }
-
-fun Context.isDarkMode(): Boolean {
-    val uiModeManager: UiModeManager = getSystemService(Context.UI_MODE_SERVICE) as UiModeManager
-    val isNight = uiModeManager.nightMode == UiModeManager.MODE_NIGHT_YES
-    return isNight
-}

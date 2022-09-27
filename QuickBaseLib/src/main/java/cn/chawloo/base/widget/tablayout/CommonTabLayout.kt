@@ -138,7 +138,7 @@ class CommonTabLayout @JvmOverloads constructor(context: Context, attrs: Attribu
     private val mLastP = IndicatorPoint()
 
     private var mFragmentChangeManager: FragmentChangeManager? = null
-    private var mListener: OnTabSelectListener? = null
+    var mListener: OnTabSelectListener? = null
 
     init {
         setWillNotDraw(false)//重写onDraw方法，需要调用这个方法清除Flag
