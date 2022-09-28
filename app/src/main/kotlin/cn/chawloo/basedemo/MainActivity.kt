@@ -1,11 +1,18 @@
 package cn.chawloo.basedemo
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
+import cn.chawloo.base.base.BaseActivity
+import cn.chawloo.basedemo.databinding.ActivityMainBinding
+import com.dylanc.viewbinding.binding
+import com.safframework.log.L
 
-class MainActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+class MainActivity : BaseActivity() {
+    private val vb by binding<ActivityMainBinding>()
+
+    override fun initialize() {
+        vb.root
+    }
+
+    override fun backPressed() {
+        println("返回键回调了")
     }
 }

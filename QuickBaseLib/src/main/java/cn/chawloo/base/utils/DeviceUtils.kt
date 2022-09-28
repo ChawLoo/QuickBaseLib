@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Build
 import android.provider.Settings
 import android.telephony.TelephonyManager
+import androidx.annotation.ChecksSdkIntAtLeast
 import java.nio.charset.StandardCharsets
 import java.security.MessageDigest
 import java.util.*
@@ -192,4 +193,7 @@ object DeviceUtils {
         }
         return String(hexChars)
     }
+
+    @ChecksSdkIntAtLeast(api = Build.VERSION_CODES.TIRAMISU)
+    fun isLatestT(): Boolean = Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU
 }

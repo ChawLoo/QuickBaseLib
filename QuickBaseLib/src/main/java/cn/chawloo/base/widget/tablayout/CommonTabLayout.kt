@@ -371,9 +371,9 @@ class CommonTabLayout @JvmOverloads constructor(context: Context, attrs: Attribu
         }
     }
 
-    override fun onAnimationUpdate(animation: ValueAnimator?) {
+    override fun onAnimationUpdate(animation: ValueAnimator) {
         val currentTabView = mTabsContainer.getChildAt(mCurrentTab)
-        val (left, right) = animation!!.animatedValue as IndicatorPoint
+        val (left, right) = animation.animatedValue as IndicatorPoint
         mIndicatorRect.left = left.toInt()
         mIndicatorRect.right = right.toInt()
 

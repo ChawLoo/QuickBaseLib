@@ -6,12 +6,15 @@ import android.content.res.TypedArray
 import android.os.Build
 import android.os.Bundle
 import android.os.Looper
-import android.view.KeyEvent
+import android.window.OnBackInvokedCallback
+import android.window.OnBackInvokedDispatcher
+import androidx.activity.addCallback
 import androidx.appcompat.app.AppCompatActivity
 import cn.chawloo.base.R
 import cn.chawloo.base.event.AntiShake
 import cn.chawloo.base.popup.LoadingPop
 import cn.chawloo.base.router.Router
+import cn.chawloo.base.utils.DeviceUtils
 import com.gyf.immersionbar.ktx.immersionBar
 import razerdp.basepopup.BasePopupWindow
 
@@ -42,15 +45,22 @@ const val BUNDLE_NAME = "bundle_name"
 
 abstract class BaseActivity : AppCompatActivity() {
     protected val util = AntiShake()
-    private var mStateSaved = false
-
+    private lateinit var onBackInvokedCallback: OnBackInvokedCallback
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initGlobalUIConfig()
         Router.inject(this)
+        if (DeviceUtils.isLatestT()) {
+            onBackInvokedCallback = OnBackInvokedCallback { backPressed() }.also {
+                onBackInvokedDispatcher.registerOnBackInvokedCallback(OnBackInvokedDispatcher.PRIORITY_DEFAULT, it)
+            }
+        } else {
+            onBackPressedDispatcher.addCallback(owner = this) {
+                backPressed()
+            }
+        }
         initialize()
         onClick()
-        mStateSaved = false
     }
 
     /**
@@ -72,82 +82,31 @@ abstract class BaseActivity : AppCompatActivity() {
 
     open fun onClick() {}
 
-    override fun onResume() {
-        super.onResume()
-        mStateSaved = false
-    }
-
     protected val act: BaseActivity get() = this
-
-    fun showProgress(var1: CharSequence = "") = showProgressDialog(var1)
-
-    fun hideProgress() = dismissProgressDialog()
-
-    @Volatile
-    var mCount = 0
-    private var mLoadingDialog: LoadingPop? = null
-
-    @Synchronized
-    private fun showProgressDialog(msg: CharSequence = "") {
-        if (mCount == 0) {
-            mLoadingDialog = LoadingPop(this, msg).apply {
-                onDismissListener = object : BasePopupWindow.OnDismissListener() {
-                    override fun onDismiss() {
-                        mCount = 0
-                    }
-                }
-            }
-            mLoadingDialog?.showPopupWindow()
-        }
-        mCount++
-    }
-
-    @Synchronized
-    private fun dismissProgressDialog() {
-        if (mCount > 0) {
-            mCount--
-            if (mCount == 0) {
-                mLoadingDialog?.dismiss()
-                mLoadingDialog = null
-            }
-        }
-    }
-
-    @Synchronized
-    private fun clearProgressDialog() {
-        if (mCount > 0) {
-            mCount = 0
-            mLoadingDialog?.dismiss()
-            mLoadingDialog = null
-        }
-    }
 
     override fun onBackPressed() {
         overridePendingTransition(R.anim.anim_activity_slide_left_in, R.anim.anim_activity_slide_right_out)
-        if (!mStateSaved) super.onBackPressed()
+        super.onBackPressed()
     }
 
-    override fun onStart() {
-        super.onStart()
-        mStateSaved = false
-    }
-
-    override fun onStop() {
-        super.onStop()
-        mStateSaved = true
+    /**
+     * 新版本的返回重写该方法
+     */
+    open fun backPressed() {
+        overridePendingTransition(R.anim.anim_activity_slide_left_in, R.anim.anim_activity_slide_right_out)
+        if (DeviceUtils.isLatestT()) {
+            finish()
+        } else {
+            onBackPressedDispatcher.onBackPressed()
+        }
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        clearProgressDialog()
-    }
-
-    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
-        return if (!mStateSaved) {
-            super.onKeyDown(keyCode, event)
-        } else {
-            true
+        if (DeviceUtils.isLatestT()) {
+            onBackInvokedDispatcher.unregisterOnBackInvokedCallback(onBackInvokedCallback)
         }
+        clearProgressDialog()
     }
 
     override fun getResources(): Resources {
@@ -177,8 +136,54 @@ abstract class BaseActivity : AppCompatActivity() {
         return isTranslucentOrFloating
     }
 
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-        mStateSaved = true
+    @Deprecated("废弃了，采用LoadingDialogHelper的扩展函数，过度几个版本就删了")
+    fun showProgress(var1: CharSequence = "") = showProgressDialog(var1)
+
+    @Deprecated("废弃了，采用LoadingDialogHelper的扩展函数，过度几个版本就删了")
+    fun hideProgress() = dismissProgressDialog()
+
+    @Deprecated("废弃了，采用LoadingDialogHelper的扩展函数，过度几个版本就删了")
+    @Volatile
+    var mCount = 0
+
+    @Deprecated("废弃了，采用LoadingDialogHelper的扩展函数，过度几个版本就删了")
+    private var mLoadingDialog: LoadingPop? = null
+
+    @Deprecated("废弃了，采用LoadingDialogHelper的扩展函数，过度几个版本就删了")
+    @Synchronized
+    private fun showProgressDialog(msg: CharSequence = "") {
+        if (mCount == 0) {
+            mLoadingDialog = LoadingPop(this, msg).apply {
+                onDismissListener = object : BasePopupWindow.OnDismissListener() {
+                    override fun onDismiss() {
+                        mCount = 0
+                    }
+                }
+            }
+            mLoadingDialog?.showPopupWindow()
+        }
+        mCount++
+    }
+
+    @Deprecated("废弃了，采用LoadingDialogHelper的扩展函数，过度几个版本就删了")
+    @Synchronized
+    private fun dismissProgressDialog() {
+        if (mCount > 0) {
+            mCount--
+            if (mCount == 0) {
+                mLoadingDialog?.dismiss()
+                mLoadingDialog = null
+            }
+        }
+    }
+
+    @Deprecated("废弃了，采用LoadingDialogHelper的扩展函数，过度几个版本就删了")
+    @Synchronized
+    private fun clearProgressDialog() {
+        if (mCount > 0) {
+            mCount = 0
+            mLoadingDialog?.dismiss()
+            mLoadingDialog = null
+        }
     }
 }
