@@ -94,11 +94,7 @@ abstract class BaseActivity : AppCompatActivity() {
      */
     open fun backPressed() {
         overridePendingTransition(R.anim.anim_activity_slide_left_in, R.anim.anim_activity_slide_right_out)
-        if (DeviceUtils.isLatestT()) {
-            finish()
-        } else {
-            onBackPressedDispatcher.onBackPressed()
-        }
+        finish()
     }
 
     override fun onDestroy() {
