@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import cn.chawloo.base.R
 import cn.chawloo.base.ext.dp
-import com.drake.brv.utils.divider
+import com.drake.brv.utils.dividerSpace
 import com.drake.brv.utils.linear
 import com.drake.brv.utils.setup
 import razerdp.basepopup.BasePopupWindow
@@ -30,8 +30,9 @@ class CommonListPopupWindow(c: Context, title: String, dataList: List<String>) :
 
         findViewById<RecyclerView>(R.id.recyclerview)
             .linear()
-            .divider(R.drawable.shape_rv_h_divider_1_dp)
+            .dividerSpace(1.dp)
             .setup {
+                addType<String>(R.layout.item_list_tv)
                 onBind {
                     findView<TextView>(R.id.text_view).text = getModel<String>()
                 }
