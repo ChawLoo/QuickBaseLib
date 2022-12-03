@@ -16,6 +16,7 @@ import cn.chawloo.base.popup.LoadingPop
 import cn.chawloo.base.router.Router
 import cn.chawloo.base.utils.DeviceUtils
 import com.gyf.immersionbar.ktx.immersionBar
+import me.jessyan.autosize.AutoSizeCompat
 import razerdp.basepopup.BasePopupWindow
 
 /**
@@ -107,7 +108,7 @@ abstract class BaseActivity : AppCompatActivity() {
 
     override fun getResources(): Resources {
         if (Looper.myLooper() == Looper.getMainLooper()) {
-//            AutoSizeCompat.autoConvertDensityOfGlobal(super.getResources())
+            AutoSizeCompat.autoConvertDensityOfGlobal(super.getResources())
         }
         return super.getResources()
     }
