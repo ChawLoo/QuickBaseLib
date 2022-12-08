@@ -12,12 +12,10 @@ import androidx.activity.addCallback
 import androidx.appcompat.app.AppCompatActivity
 import cn.chawloo.base.R
 import cn.chawloo.base.event.AntiShake
-import cn.chawloo.base.popup.LoadingPop
 import cn.chawloo.base.router.Router
 import cn.chawloo.base.utils.DeviceUtils
 import com.gyf.immersionbar.ktx.immersionBar
 import me.jessyan.autosize.AutoSizeCompat
-import razerdp.basepopup.BasePopupWindow
 
 /**
  * Activity基类（不含业务）
@@ -103,7 +101,6 @@ abstract class BaseActivity : AppCompatActivity() {
         if (DeviceUtils.isLatestT()) {
             onBackInvokedDispatcher.unregisterOnBackInvokedCallback(onBackInvokedCallback)
         }
-        clearProgressDialog()
     }
 
     override fun getResources(): Resources {
@@ -131,56 +128,5 @@ abstract class BaseActivity : AppCompatActivity() {
             e.printStackTrace()
         }
         return isTranslucentOrFloating
-    }
-
-    @Deprecated("废弃了，采用LoadingDialogHelper的扩展函数，过度几个版本就删了")
-    fun showProgress(var1: CharSequence = "") = showProgressDialog(var1)
-
-    @Deprecated("废弃了，采用LoadingDialogHelper的扩展函数，过度几个版本就删了")
-    fun hideProgress() = dismissProgressDialog()
-
-    @Deprecated("废弃了，采用LoadingDialogHelper的扩展函数，过度几个版本就删了")
-    @Volatile
-    var mCount = 0
-
-    @Deprecated("废弃了，采用LoadingDialogHelper的扩展函数，过度几个版本就删了")
-    private var mLoadingDialog: LoadingPop? = null
-
-    @Deprecated("废弃了，采用LoadingDialogHelper的扩展函数，过度几个版本就删了")
-    @Synchronized
-    private fun showProgressDialog(msg: CharSequence = "") {
-        if (mCount == 0) {
-            mLoadingDialog = LoadingPop(this, msg).apply {
-                onDismissListener = object : BasePopupWindow.OnDismissListener() {
-                    override fun onDismiss() {
-                        mCount = 0
-                    }
-                }
-            }
-            mLoadingDialog?.showPopupWindow()
-        }
-        mCount++
-    }
-
-    @Deprecated("废弃了，采用LoadingDialogHelper的扩展函数，过度几个版本就删了")
-    @Synchronized
-    private fun dismissProgressDialog() {
-        if (mCount > 0) {
-            mCount--
-            if (mCount == 0) {
-                mLoadingDialog?.dismiss()
-                mLoadingDialog = null
-            }
-        }
-    }
-
-    @Deprecated("废弃了，采用LoadingDialogHelper的扩展函数，过度几个版本就删了")
-    @Synchronized
-    private fun clearProgressDialog() {
-        if (mCount > 0) {
-            mCount = 0
-            mLoadingDialog?.dismiss()
-            mLoadingDialog = null
-        }
     }
 }

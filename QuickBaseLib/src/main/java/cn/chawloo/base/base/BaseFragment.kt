@@ -45,8 +45,4 @@ abstract class BaseFragment(@LayoutRes layoutId: Int) : Fragment(layoutId) {
     }
 
     abstract fun initialize()
-
-    protected fun showProgress(msg: CharSequence = "") = mActivity.showProgress(msg)
-
-    protected fun hideProgress() = mActivity.hideProgress()
 }
