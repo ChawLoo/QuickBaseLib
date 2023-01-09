@@ -65,7 +65,6 @@ dependencies {
     api(libs.basePopup)
     api(libs.toast)
     api(libs.koin.android)
-    api(libs.koin.annotations)
     api(libs.okhttp)
     api(libs.retrofit)
     api(libs.xPermission)
@@ -92,7 +91,7 @@ val androidSourcesJar = task<Jar>("androidSourcesJar") {
 }
 
 publishing {
-    val ver = "1.1.10-alpha01"
+    val ver = "1.1.11"
     publications {
         create<MavenPublication>("maven") {
             groupId = "io.github.chawloo"

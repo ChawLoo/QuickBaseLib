@@ -1,5 +1,6 @@
 package cn.chawloo.base.toast
 
+import com.hjq.toast.ToastParams
 import com.hjq.toast.config.IToastInterceptor
 
 /**
@@ -28,11 +29,11 @@ import com.hjq.toast.config.IToastInterceptor
 class ToastInterceptor : IToastInterceptor {
     private var toastText: CharSequence = ""
     private var lastShowTime = 0L
-    override fun intercept(text: CharSequence?): Boolean {
+    override fun intercept(params: ToastParams?): Boolean {
         val showTime = System.currentTimeMillis()
-        return if (text == toastText && showTime - lastShowTime <= 300L) {
+        return if (params?.text == toastText && showTime - lastShowTime <= 300L) {
             lastShowTime = showTime
-            toastText = text
+            toastText = params.text ?: ""
             true
         } else {
             false
