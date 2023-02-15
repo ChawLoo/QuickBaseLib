@@ -81,17 +81,11 @@ abstract class BaseActivity : AppCompatActivity() {
 
     open fun onClick() {}
 
-    protected val act: BaseActivity get() = this
-
-    override fun onBackPressed() {
-        overridePendingTransition(R.anim.anim_activity_slide_left_in, R.anim.anim_activity_slide_right_out)
-        super.onBackPressed()
-    }
-
     /**
      * 新版本的返回重写该方法
      */
     open fun backPressed() {
+        println("触发返回键拦截了")
         overridePendingTransition(R.anim.anim_activity_slide_left_in, R.anim.anim_activity_slide_right_out)
         finish()
     }

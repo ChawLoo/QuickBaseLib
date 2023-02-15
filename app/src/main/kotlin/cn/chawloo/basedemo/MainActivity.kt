@@ -11,8 +11,4 @@ class MainActivity : BaseActivity() {
     override fun initialize() {
         vb.root
     }
-
-    override fun backPressed() {
-        println("返回键回调了")
-    }
 }

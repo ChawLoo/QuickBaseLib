@@ -34,9 +34,10 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
-    buildFeatures {
-        viewBinding = true
+    viewBinding {
+        enable = true
     }
+    namespace = "cn.chawloo.basedemo"
 }
 
 dependencies {
