@@ -5,7 +5,7 @@ import android.content.ClipboardManager
 import android.content.Context
 import android.os.Bundle
 import android.os.Parcelable
-import com.hjq.toast.ToastUtils
+import com.hjq.toast.Toaster
 import java.io.Serializable
 
 /**
@@ -34,7 +34,7 @@ import java.io.Serializable
 fun String?.insertClipboard(context: Context, title: String = "标题已复制") {
     val clipboardManager = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
     clipboardManager.setPrimaryClip(ClipData.newPlainText(null, this))
-    ToastUtils.show(title)
+    Toaster.show(title)
 }
 
 fun <T> Bundle.put(key: String, value: T) {

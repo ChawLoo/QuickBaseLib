@@ -6,7 +6,7 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.provider.Settings
-import com.hjq.toast.ToastUtils
+import com.hjq.toast.Toaster
 
 const val KEY_FIRST_RUN = "key_first_run"
 
@@ -60,7 +60,7 @@ object AppLauncher {
                 e.printStackTrace()
             }
         } ?: run {
-            ToastUtils.show("未找到应用市场")
+            Toaster.show("未找到应用市场")
         }
     }
 }

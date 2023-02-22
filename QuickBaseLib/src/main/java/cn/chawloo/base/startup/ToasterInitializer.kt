@@ -5,7 +5,7 @@ import android.content.Context
 import android.view.Gravity
 import androidx.startup.Initializer
 import cn.chawloo.base.toast.ToastInterceptor
-import com.hjq.toast.ToastUtils
+import com.hjq.toast.Toaster
 import com.hjq.toast.style.BlackToastStyle
 
 /**
@@ -31,11 +31,11 @@ import com.hjq.toast.style.BlackToastStyle
  *          └─┴─┘   └─┴─┘
  *─────────────神兽出没───────────────/
  */
-class ToastInitializer : Initializer<Unit> {
+class ToasterInitializer : Initializer<Unit> {
     override fun create(context: Context) {
-        ToastUtils.init(context as Application?, BlackToastStyle())
-        ToastUtils.setGravity(Gravity.BOTTOM, 0, 100)
-        ToastUtils.setInterceptor(ToastInterceptor())
+        Toaster.init(context as Application?, BlackToastStyle())
+        Toaster.setGravity(Gravity.BOTTOM, 0, 100)
+        Toaster.setInterceptor(ToastInterceptor())
     }
 
     override fun dependencies() = emptyList<Class<Initializer<*>>>()
