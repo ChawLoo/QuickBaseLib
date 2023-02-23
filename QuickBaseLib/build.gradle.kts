@@ -31,8 +31,8 @@ android {
         jvmTarget = "11"
     }
 
-    buildFeatures {
-        viewBinding = true
+    viewBinding {
+        enable = true
     }
 
     namespace = "cn.chawloo.base"
@@ -91,7 +91,7 @@ val androidSourcesJar = task<Jar>("androidSourcesJar") {
 }
 
 publishing {
-    val ver = "1.1.14"
+    val ver = "1.1.15"
     publications {
         create<MavenPublication>("maven") {
             groupId = "io.github.chawloo"

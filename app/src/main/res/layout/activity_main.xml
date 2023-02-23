@@ -13,4 +13,9 @@
         android:layout_height="wrap_content"
         android:text="显示气泡" />
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_show_long_toast"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="显示长气泡" />
 </androidx.appcompat.widget.LinearLayoutCompat>
