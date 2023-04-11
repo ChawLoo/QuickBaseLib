@@ -91,7 +91,7 @@ val androidSourcesJar = task<Jar>("androidSourcesJar") {
 }
 
 publishing {
-    val ver = "1.1.15"
+    val ver = "1.1.16"
     publications {
         create<MavenPublication>("maven") {
             groupId = "io.github.chawloo"
