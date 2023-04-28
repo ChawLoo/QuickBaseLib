@@ -1,12 +1,7 @@
 plugins {
     id("com.android.application")
     kotlin("android")
-    kotlin("kapt")
-}
-kapt {
-    arguments {
-        arg("AROUTER_MODULE_NAME", "update")
-    }
+    id("com.google.devtools.ksp")
 }
 android {
     compileSdk = libs.versions.compileSdk.get().toInt()
@@ -28,11 +23,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "11"
+        jvmTarget = "17"
     }
     viewBinding {
         enable = true

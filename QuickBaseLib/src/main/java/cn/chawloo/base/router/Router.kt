@@ -1,11 +1,8 @@
 package cn.chawloo.base.router
 
-import android.content.Intent
 import android.os.Bundle
 import cn.chawloo.base.base.BUNDLE_NAME
-import cn.chawloo.base.constants.MKKeys
-import cn.chawloo.base.utils.MK
-import com.alibaba.android.arouter.launcher.ARouter
+import com.therouter.TheRouter
 
 /**
  * 路由器
@@ -32,10 +29,10 @@ import com.alibaba.android.arouter.launcher.ARouter
  */
 object Router {
     fun inject(clz: Any) {
-        ARouter.getInstance().inject(clz)
+        TheRouter.inject(clz)
     }
 
     fun goto(path: String, bundle: Bundle.() -> Unit = {}) {
-        ARouter.getInstance().build(path).withBundle(BUNDLE_NAME, Bundle().apply(bundle)).navigation()
+        TheRouter.build(path).withBundle(BUNDLE_NAME, Bundle().apply(bundle)).navigation()
     }
 }

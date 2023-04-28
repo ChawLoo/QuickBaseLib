@@ -23,18 +23,16 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
 
     kotlinOptions {
-        jvmTarget = "11"
+        jvmTarget = "17"
     }
-
-    viewBinding {
-        enable = true
+    buildFeatures {
+        viewBinding = true
     }
-
     namespace = "cn.chawloo.base"
 }
 
@@ -60,7 +58,7 @@ dependencies {
     api(libs.material)
     api(libs.brv)
     api(libs.jodatime)
-    api(libs.arouter.api)
+    api(libs.therouter)
     api(libs.androidautosize)
     api(libs.basePopup)
     api(libs.toast)
@@ -91,7 +89,7 @@ val androidSourcesJar = task<Jar>("androidSourcesJar") {
 }
 
 publishing {
-    val ver = "1.1.17"
+    val ver = "1.2.0"
     publications {
         create<MavenPublication>("maven") {
             groupId = "io.github.chawloo"

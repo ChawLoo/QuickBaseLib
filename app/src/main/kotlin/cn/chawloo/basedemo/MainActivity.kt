@@ -7,7 +7,6 @@ import cn.chawloo.base.ext.toast
 import cn.chawloo.base.popup.showConfirmWindow
 import cn.chawloo.basedemo.databinding.ActivityMainBinding
 import com.dylanc.viewbinding.binding
-import com.safframework.log.L
 
 class MainActivity : BaseActivity() {
     private val vb by binding<ActivityMainBinding>()

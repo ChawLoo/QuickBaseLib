@@ -38,9 +38,6 @@
             <meta-data
                 android:name="cn.chawloo.base.startup.ToasterInitializer"
                 android:value="androidx.startup" />
-            <meta-data
-                android:name="cn.chawloo.base.startup.ARouterInitializer"
-                android:value="androidx.startup" />
         </provider>
     </application>
 
