@@ -7,6 +7,7 @@ import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import android.widget.TextView
 import cn.chawloo.base.R
+import cn.chawloo.base.ext.doClick
 import cn.chawloo.base.ext.dp
 import razerdp.basepopup.BasePopupWindow
 
@@ -27,6 +28,6 @@ class CommonLongContentPopupWindow(context: Context?, title: String, content: St
         val tvContent = findViewById<TextView>(R.id.tv_content)
         tvContent.text = content
         tvContent.movementMethod = ScrollingMovementMethod.getInstance()
-        findViewById<ImageView>(R.id.iv_close).setOnClickListener { dismiss() }
+        findViewById<ImageView>(R.id.iv_close).doClick { dismiss() }
     }
 }

@@ -17,6 +17,7 @@ import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import cn.chawloo.base.R
+import cn.chawloo.base.ext.doClick
 import cn.chawloo.base.ext.dp
 import cn.chawloo.base.ext.gone
 import cn.chawloo.base.ext.sp
@@ -368,8 +369,8 @@ class SlidingTabLayout @JvmOverloads constructor(context: Context, attrs: Attrib
     private fun addTab(position: Int, title: String, tabView: View) {
         val tvTabTitle = tabView.findViewById<TextView>(R.id.tv_tab_title)
         tvTabTitle.text = title
-        tabView.setOnClickListener {
-            val position1 = mTabsContainer.indexOfChild(it)
+        tabView.doClick {
+            val position1 = mTabsContainer.indexOfChild(this)
             if (position1 != -1) {
                 if (mViewPager.currentItem != position1) {
                     if (mSnapOnTabClick) {

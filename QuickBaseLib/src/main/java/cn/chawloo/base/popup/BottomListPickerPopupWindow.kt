@@ -8,7 +8,7 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import cn.chawloo.base.R
 import cn.chawloo.base.databinding.ItemSimpleBottomListBinding
-import cn.chawloo.base.databinding.PopSimpleBottomListBinding
+import cn.chawloo.base.ext.doClick
 import cn.chawloo.base.ext.dp
 import com.drake.brv.utils.divider
 import com.drake.brv.utils.linear
@@ -27,6 +27,7 @@ class BottomListPickerPopupWindow(context: Context, dataList: List<String>, pick
         setMaxHeight(300.dp)
         showAnimation = AnimationUtils.loadAnimation(context, R.anim.pop_bottom_show)
         dismissAnimation = AnimationUtils.loadAnimation(context, R.anim.pop_bottom_dismiss)
+        setOverlayNavigationBar(false)
         findViewById<RecyclerView>(R.id.recyclerview)
             .linear()
             .divider(R.drawable.shape_rv_h_divider_1_dp)
@@ -46,6 +47,6 @@ class BottomListPickerPopupWindow(context: Context, dataList: List<String>, pick
                     picker(getModel())
                 }
             }.models = dataList
-        findViewById<TextView>(R.id.tv_cancel).setOnClickListener { dismiss() }
+        findViewById<TextView>(R.id.tv_cancel).doClick { dismiss() }
     }
 }

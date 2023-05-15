@@ -3,7 +3,7 @@ package cn.chawloo.basedemo
 import cn.chawloo.base.base.BaseActivity
 import cn.chawloo.base.ext.doClick
 import cn.chawloo.base.ext.longToast
-import cn.chawloo.base.ext.toast
+import cn.chawloo.base.popup.showBottomListPopup
 import cn.chawloo.base.popup.showConfirmWindow
 import cn.chawloo.basedemo.databinding.ActivityMainBinding
 import com.dylanc.viewbinding.binding
@@ -13,8 +13,11 @@ class MainActivity : BaseActivity() {
 
     override fun initialize() {
         vb.btnShowToast.doClick {
-            showConfirmWindow(this@MainActivity, content = "测试文案", leftStr = "取消", rightStr = "好的") {
-                toast("点击了好的")
+            val telNo = "010-12345678"
+            val telNumber = telNo.replace("tel:", "").replace("/".toRegex(), "")
+            var telList = telNumber.takeIf { it.isNotBlank() }?.split(",")
+            telList = telList?.takeIf { it.size > 3 }?.subList(0, 3) ?: telList
+            showBottomListPopup(this@MainActivity, telList?.takeIf { it.isNotEmpty() } ?: listOf("400-600-3067")) { t ->
             }
         }
         vb.btnShowLongToast.doClick {

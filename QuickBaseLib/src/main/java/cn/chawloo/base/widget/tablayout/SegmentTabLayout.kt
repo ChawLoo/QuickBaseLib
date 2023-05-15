@@ -22,6 +22,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import cn.chawloo.base.R
+import cn.chawloo.base.ext.doClick
 import cn.chawloo.base.ext.dp
 import cn.chawloo.base.ext.gone
 import cn.chawloo.base.ext.sp
@@ -211,8 +212,8 @@ class SegmentTabLayout @JvmOverloads constructor(context: Context, attrs: Attrib
     private fun addTab(position: Int, tabView: View) {
         val tvTabTitle = tabView.findViewById<TextView>(R.id.tv_tab_title)
         tvTabTitle.text = mTitles[position]
-        tabView.setOnClickListener {
-            val p = it.tag as Int
+        tabView.doClick {
+            val p = this.tag as Int
             if (mCurrentTab != p) {
                 setCurrentTab(p)
                 mListener?.onTabSelect(p)

@@ -18,6 +18,7 @@ import androidx.appcompat.widget.AppCompatImageView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import cn.chawloo.base.R
+import cn.chawloo.base.ext.doClick
 import cn.chawloo.base.ext.dp
 import cn.chawloo.base.ext.gone
 import cn.chawloo.base.ext.sp
@@ -257,8 +258,8 @@ class CommonTabLayout @JvmOverloads constructor(context: Context, attrs: Attribu
         val ivTabIcon = tabView.findViewById<AppCompatImageView>(R.id.iv_tab_icon)
         ivTabIcon.setImageResource(mTabEntities[position].tabUnselectedIcon)
 
-        tabView.setOnClickListener {
-            val clickPosition = it.tag as Int
+        tabView.doClick {
+            val clickPosition = this.tag as Int
             if (mCurrentTab != clickPosition) {
                 mCurrentTab = clickPosition
                 mListener?.onTabSelect(clickPosition)

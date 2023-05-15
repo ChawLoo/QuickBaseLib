@@ -7,6 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import cn.chawloo.base.R
+import cn.chawloo.base.ext.doClick
 import cn.chawloo.base.ext.dp
 import com.drake.brv.utils.dividerSpace
 import com.drake.brv.utils.linear
@@ -26,7 +27,7 @@ class CommonListPopupWindow(c: Context, title: String, dataList: List<String>) :
         dismissAnimation = AnimationUtils.loadAnimation(context, R.anim.pop_middle_dismiss)
 
         val ivClose = findViewById<ImageView>(R.id.iv_close)
-        ivClose.setOnClickListener { dismiss() }
+        ivClose.doClick { dismiss() }
 
         findViewById<RecyclerView>(R.id.recyclerview)
             .linear()
