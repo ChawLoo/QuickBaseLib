@@ -33,9 +33,9 @@ import java.lang.reflect.Type
 abstract class Serializer {
     abstract fun <T> fromResponseBody(loader: DeserializationStrategy<T>, body: ResponseBody): T
     abstract fun <T> toRequestBody(contentType: MediaType, saver: SerializationStrategy<T>, value: T): RequestBody
+
     protected abstract val format: SerialFormat
 
-    @OptIn(ExperimentalSerializationApi::class)
     fun serializer(type: Type): KSerializer<Any> = format.serializersModule.serializer(type)
 
     class FromString(override val format: StringFormat) : Serializer() {
