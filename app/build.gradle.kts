@@ -2,6 +2,7 @@ plugins {
     id("com.android.application")
     kotlin("android")
     id("com.google.devtools.ksp")
+    id("therouter")
 }
 android {
     compileSdk = libs.versions.compileSdk.get().toInt()
@@ -38,4 +39,6 @@ android {
 dependencies {
     implementation(project(":QuickBaseLib"))
     testImplementation(libs.junit)
+    api(libs.therouter)
+    ksp(libs.therouter.apt)
 }

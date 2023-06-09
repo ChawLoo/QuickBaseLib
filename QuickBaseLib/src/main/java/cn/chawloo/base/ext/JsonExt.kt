@@ -48,3 +48,11 @@ fun String.fromJson(): JsonObject = json.decodeFromString(this)
 fun JsonObject.getBoolean(key: String, default: Boolean = false): Boolean {
     return this[key]?.jsonPrimitive?.booleanOrNull ?: default
 }
+
+fun JsonObject.getString(key: String, default: String = ""): String {
+    return this[key]?.jsonPrimitive?.content ?: default
+}
+
+fun JsonObject.getInt(key: String, default: Int = 0): Int {
+    return this[key]?.jsonPrimitive?.content?.toIntOrNull() ?: default
+}
