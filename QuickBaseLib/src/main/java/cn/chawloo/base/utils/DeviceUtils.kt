@@ -3,12 +3,11 @@ package cn.chawloo.base.utils
 import android.content.Context
 import android.os.Build
 import android.provider.Settings
-import android.telephony.TelephonyManager
 import androidx.annotation.ChecksSdkIntAtLeast
+import java.math.BigInteger
 import java.nio.charset.StandardCharsets
 import java.security.MessageDigest
-import java.util.*
-import kotlin.experimental.and
+import java.util.UUID
 
 /**
  * 设备相关工具类
@@ -37,19 +36,17 @@ object DeviceUtils {
     /**
      * 获取版本名称
      */
-    fun Context.getVersionName(): String {
-        return try {
-            packageManager.getPackageInfo(packageName, 0).versionName
-        } catch (e: Exception) {
-            e.printStackTrace()
-            "0.1.0"
-        }
+    fun Context.versionName(): String = try {
+        packageManager.getPackageInfo(packageName, 0).versionName
+    } catch (e: Exception) {
+        e.printStackTrace()
+        "1.0"
     }
 
     /**
      * 获取版本名称
      */
-    fun Context.getVersionCode(): Long {
+    fun Context.versionCode(): Long {
         return try {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
                 packageManager.getPackageInfo(packageName, 0).longVersionCode
@@ -64,29 +61,24 @@ object DeviceUtils {
 
     fun Context.getDeviceId(): String {
         val sb = StringBuilder()
-        val imei = getIMEI()
-        val androidId = getAndroidId()
+        val androidId = this.androidId()
         val serial = getSERIAL()
         val uuid = getDeviceUUID().replace("-", "")
-        if (imei.isNotBlank()) {
-            sb.append(imei)
-            sb.append("|")
-        }
         if (androidId.isNotBlank()) {
             sb.append(androidId)
-            sb.append("|")
         }
         if (serial.isNotBlank()) {
+            sb.takeIf { it.isNotBlank() }?.append("|")
             sb.append(serial)
-            sb.append("|")
         }
         if (uuid.isNotBlank()) {
+            sb.takeIf { it.isNotBlank() }?.append("|")
             sb.append(uuid)
         }
         if (sb.isNotBlank()) {
             try {
                 val hash = sb.toString().toHash()
-                val sha1 = bytesToHex(hash)
+                val sha1 = hash.toHex()
                 if (sha1.isNotBlank()) {
                     return sha1
                 }
@@ -97,22 +89,12 @@ object DeviceUtils {
         return UUID.randomUUID().toString().replace("-", "")
     }
 
-    //需要获得READ_PHONE_STATE权限，>=6.0，默认返回null
-    private fun Context.getIMEI(): String {
-        return try {
-            (getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager).deviceId
-        } catch (ex: Exception) {
-            ex.printStackTrace()
-            ""
-        }
-    }
-
     /**
      * 获得设备的AndroidId
      *
      * @return 设备的AndroidId
      */
-    private fun Context.getAndroidId(): String {
+    private fun Context.androidId(): String {
         return try {
             Settings.Secure.getString(contentResolver, Settings.Secure.ANDROID_ID)
         } catch (ex: Exception) {
@@ -162,7 +144,6 @@ object DeviceUtils {
     /**
      * 取SHA1
      *
-     * @param data 数据
      * @return 对应的hash值
      */
     private fun String.toHash(): ByteArray {
@@ -176,22 +157,13 @@ object DeviceUtils {
         }
     }
 
-    private val hexArray = "0123456789ABCDEF".toCharArray()
-
     /**
      * 转16进制字符串
      *
-     * @param bytes 数据
      * @return 16进制字符串
      */
-    private fun bytesToHex(bytes: ByteArray): String {
-        val hexChars = CharArray(bytes.size * 2)
-        for (j in bytes.indices) {
-            val v = (bytes[j] and 0xFF.toByte()).toInt()
-            hexChars[j * 2] = hexArray[v ushr 4]
-            hexChars[j * 2 + 1] = hexArray[v and 0x0F]
-        }
-        return String(hexChars)
+    private fun ByteArray.toHex(): String {
+        return BigInteger(1, this).toString(16)
     }
 
     @ChecksSdkIntAtLeast(api = Build.VERSION_CODES.TIRAMISU)
