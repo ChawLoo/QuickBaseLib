@@ -6,7 +6,6 @@ import cn.chawloo.base.mvi.event.SingleLiveEvents
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onCompletion
-import org.koin.core.component.KoinComponent
 
 /**
  * ViewModel基类（不包含业务，都是通用的）
@@ -31,7 +30,7 @@ import org.koin.core.component.KoinComponent
  *          └─┴─┘   └─┴─┘
  *─────────────神兽出没───────────────/
  */
-abstract class BaseViewModel : ViewModel(), KoinComponent {
+abstract class BaseViewModel : ViewModel() {
     private val _viewEvents = SingleLiveEvents<PageEvent>()
     val event = _viewEvents.asLiveData()
 
