@@ -46,8 +46,8 @@ dependencies {
     api(libs.multidex)
     api(libs.activity.ktx)
     api(libs.fragment.ktx)
-    api(libs.viewmodel)
-    api(libs.livedata)
+    api(libs.lifecycle.viewmodel)
+    api(libs.lifecycle.livedata)
     api(libs.annotation)
     api(libs.constraintlayout)
     api(libs.recyclerview)
@@ -88,7 +88,7 @@ val androidSourcesJar = task<Jar>("androidSourcesJar") {
 }
 
 publishing {
-    val ver = "1.2.5"
+    val ver = "1.2.6"
     publications {
         create<MavenPublication>("maven") {
             groupId = "io.github.chawloo"
