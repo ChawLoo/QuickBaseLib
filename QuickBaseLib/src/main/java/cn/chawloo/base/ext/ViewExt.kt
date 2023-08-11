@@ -134,8 +134,8 @@ fun <T : View> List<T>.doClick(clickIntervals: Int = BaseLibConfig.clickInterval
     forEach { it.doClick(clickIntervals, isSharingIntervals, block) }
 
 fun <T : View> T.doClick(clickIntervals: Int = BaseLibConfig.clickIntervals, isSharingIntervals: Boolean = false, block: T.() -> Unit) = setOnClickListener {
-    this.context.activity?.hideSoftKeyboard()
-    val view = if (isSharingIntervals) context.activity?.window?.decorView ?: this else this
+    this.context.asActivity()?.hideSoftKeyboard()
+    val view = if (isSharingIntervals) context.asActivity()?.window?.decorView ?: this else this
     val currentTime = System.currentTimeMillis()
     val lastTime = view.lastClickTime ?: 0
     if (currentTime - lastTime > clickIntervals) {

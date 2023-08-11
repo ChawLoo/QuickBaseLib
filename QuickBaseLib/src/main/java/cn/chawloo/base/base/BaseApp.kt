@@ -1,8 +1,10 @@
 package cn.chawloo.base.base
 
-import android.app.Application
-import android.content.Context
-import androidx.multidex.MultiDex
+import androidx.multidex.MultiDexApplication
+import cn.chawloo.base.ext.OnAppStatusChangedListener
+import cn.chawloo.base.ext.activityCache
+import cn.chawloo.base.ext.application
+import cn.chawloo.base.ext.doOnActivityLifecycle
 
 /**
  * Application基类
@@ -27,9 +29,35 @@ import androidx.multidex.MultiDex
  *          └─┴─┘   └─┴─┘
  *─────────────神兽出没───────────────/
  */
-open class BaseApp : Application() {
-    override fun attachBaseContext(base: Context?) {
-        super.attachBaseContext(base)
-        MultiDex.install(this)
+open class BaseApp : MultiDexApplication() {
+    private var started = 0
+
+    companion object {
+        internal var onAppStatusChangedListener: OnAppStatusChangedListener? = null
+    }
+
+    override fun onCreate() {
+        super.onCreate()
+        application = this
+        application.doOnActivityLifecycle(
+            onActivityCreated = { activity, _ ->
+                activityCache.add(activity)
+            },
+            onActivityStarted = { activity ->
+                started++
+                if (started == 1) {
+                    onAppStatusChangedListener?.onForeground(activity)
+                }
+            },
+            onActivityStopped = { activity ->
+                started--
+                if (started == 0) {
+                    onAppStatusChangedListener?.onBackground(activity)
+                }
+            },
+            onActivityDestroyed = { activity ->
+                activityCache.remove(activity)
+            }
+        )
     }
 }

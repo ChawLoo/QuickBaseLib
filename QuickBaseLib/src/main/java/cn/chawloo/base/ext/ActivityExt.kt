@@ -4,18 +4,15 @@ import android.app.Activity
 import android.content.Context
 import android.content.ContextWrapper
 import android.content.Intent
-import android.os.Bundle
-import android.view.View
-import android.view.ViewGroup
 import androidx.activity.ComponentActivity
 import androidx.activity.OnBackPressedCallback
 import androidx.annotation.StringRes
-import androidx.core.os.bundleOf
-import androidx.core.view.WindowCompat
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.LifecycleOwner
-import java.util.*
-import kotlin.reflect.KClass
+import cn.chawloo.base.base.BaseActivity
+import cn.chawloo.base.constants.MKKeys
+import cn.chawloo.base.utils.MK
+import java.util.LinkedList
 
 /**
  * TODO
@@ -41,61 +38,69 @@ import kotlin.reflect.KClass
  *─────────────神兽出没───────────────/
  */
 internal val activityCache = LinkedList<Activity>()
+fun startActivity(intent: Intent) = topActivity.startActivity(intent)
 val activityList: List<Activity> get() = activityCache.toList()
 val topActivity: Activity get() = activityCache.last()
 val firstActivity: Activity get() = activityCache.first()
 
-fun startActivity(intent: Intent) = topActivity.startActivity(intent)
-
-inline fun <reified T : Activity> startActivity(
-    vararg pairs: Pair<String, Any?>,
-    crossinline block: Intent.() -> Unit = {}
-) = topActivity.startActivity<T>(pairs = pairs, block = block)
-
-inline fun <reified T : Activity> Context.startActivity(
-    vararg pairs: Pair<String, Any?>,
-    crossinline block: Intent.() -> Unit = {}
-) = startActivity(intentOf<T>(*pairs).apply(block))
-
-fun Activity.finishWithResult(vararg pairs: Pair<String, *>) {
-    setResult(Activity.RESULT_OK, Intent().putExtras(bundleOf(*pairs)))
-    finish()
+fun BaseActivity.findPreAct(): BaseActivity? {
+    return findPreActivity(this)
 }
 
-fun Activity.finishWithResult(bundle: Bundle) {
-    setResult(Activity.RESULT_OK, Intent().putExtras(bundle))
-    finish()
-}
-
-fun Activity.finishWithResult(createBundle: Bundle.() -> Bundle) {
-    finishWithResult(createBundle)
-}
-
-inline fun <reified T : Activity> isActivityExistsInStack(): Boolean = isActivityExistsInStack(T::class.java)
-
-fun <T : Activity> isActivityExistsInStack(clazz: Class<T>): Boolean = activityCache.any { it.javaClass == clazz }
-
-inline fun <reified T : Activity> finishActivity(): Boolean = finishActivity(T::class)
-
-fun <T : Activity> finishActivity(clazz: KClass<T>): Boolean =
-    activityCache.removeAll {
-        if (it.javaClass == clazz) it.finish()
-        it.javaClass == clazz
-    }
-
-fun finishAllActivities(): Boolean =
-    activityCache.removeAll {
-        it.finish()
-        true
-    }
-
-fun finishAllActivitiesExceptNewest(): Boolean =
-    topActivity.let { topActivity ->
-        activityCache.removeAll {
-            if (it != topActivity) it.finish()
-            it != topActivity
+fun <A : Activity> findPreActivity(currentAct: Activity): A? {
+    try {
+        val currentIndex = activityCache.indexOf(currentAct)
+        if (currentIndex > 0) {
+            return activityCache[currentIndex - 1] as? A
         }
+    } catch (e: Exception) {
+        e.printStackTrace()
     }
+    return null
+}
+
+inline fun <reified T : Activity> finishActivity(): Boolean = finishActivity(T::class.java)
+
+fun <T : Activity> finishActivity(clazz: Class<T>): Boolean = activityCache.removeAll {
+    if (it.javaClass.name == clazz.name) it.finish()
+    it.javaClass.name == clazz.name
+}
+
+inline fun <reified T : Activity> finishToActivity(): Boolean = finishToActivity(T::class.java)
+
+fun <T : Activity> finishToActivity(clazz: Class<T>): Boolean {
+    for (i in activityCache.lastIndex downTo 0) {
+        if (clazz.name == activityCache[i].javaClass.name) {
+            return true
+        }
+        activityCache.removeAt(i).finish()
+    }
+    return false
+}
+
+fun finishAllActivities(): Boolean = activityCache.removeAll {
+    it.finish()
+    true
+}
+
+inline fun <reified T : Activity> finishAllActivitiesExcept(): Boolean = finishAllActivitiesExcept(T::class.java)
+
+fun <T : Activity> finishAllActivitiesExcept(clazz: Class<T>): Boolean = activityCache.removeAll {
+    if (it.javaClass.name != clazz.name) it.finish()
+    it.javaClass.name != clazz.name
+}
+
+fun finishAllActivitiesExceptNewest(): Boolean = finishAllActivitiesExcept(topActivity.javaClass)
+
+/**
+ * 判断是否存在
+ */
+inline fun <reified T : Activity> isActExistsInStack(): Boolean = isActExistsInStack(T::class.java)
+
+/**
+ * 判断是否存在
+ */
+fun <T : Activity> isActExistsInStack(clazz: Class<T>): Boolean = activityCache.any { it.javaClass.name == clazz.name }
 
 fun ComponentActivity.pressBackTwiceToExitApp(toastText: String, delayMillis: Long = 2000, owner: LifecycleOwner = this) =
     pressBackTwiceToExitApp(delayMillis, owner) { toast(toastText) }
@@ -129,23 +134,7 @@ fun ComponentActivity.doOnBackPressed(owner: LifecycleOwner = this, onBackPresse
         override fun handleOnBackPressed() = onBackPressed()
     })
 
-var Activity.decorFitsSystemWindows: Boolean
-    @Deprecated(NO_GETTER, level = DeprecationLevel.ERROR)
-    get() = noGetter()
-    set(value) = WindowCompat.setDecorFitsSystemWindows(window, value)
-inline val Activity.contentView: View get() = (findViewById<View>(android.R.id.content) as ViewGroup).getChildAt(0)
-
-val Context.activity: Activity?
-    get() {
-        var context: Context? = this
-        while (context is ContextWrapper) {
-            if (context is Activity) {
-                return context
-            }
-            context = context.baseContext
-        }
-        return null
-    }
+fun Context.asActivity(): Activity? = this as? Activity ?: (this as? ContextWrapper)?.baseContext?.asActivity()
 
 inline val Context.context: Context get() = this
 
@@ -154,3 +143,7 @@ inline val Activity.activity: Activity get() = this
 inline val FragmentActivity.fragmentActivity: FragmentActivity get() = this
 
 inline val ComponentActivity.lifecycleOwner: LifecycleOwner get() = this
+
+fun Activity.setFontScale() {
+    resources.configuration.fontScale = if (MK.decodeBool(MKKeys.LARGE_TEXT)) 1.2f else 1.0F
+}

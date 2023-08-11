@@ -2,16 +2,35 @@
 
 package cn.chawloo.base.ext
 
-import android.Manifest.permission.CALL_PHONE
-import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
-import android.os.Build
 import android.os.Bundle
-import androidx.annotation.RequiresPermission
 import androidx.core.os.bundleOf
 
+/**
+ * TODO
+ * @author Create by 鲁超 on 2023/7/13 16:05
+ *----------Dragon be here!----------/
+ *       ┌─┐      ┌─┐
+ *     ┌─┘─┴──────┘─┴─┐
+ *     │              │
+ *     │      ─       │
+ *     │  ┬─┘   └─┬   │
+ *     │              │
+ *     │      ┴       │
+ *     │              │
+ *     └───┐      ┌───┘
+ *         │      │神兽保佑
+ *         │      │代码无BUG！
+ *         │      └──────┐
+ *         │             ├┐
+ *         │             ┌┘
+ *         └┐ ┐ ┌───┬─┐ ┌┘
+ *          │ ┤ ┤   │ ┤ ┤
+ *          └─┴─┘   └─┴─┘
+ *─────────────神兽出没───────────────/
+ */
 inline fun <reified T> Context.intentOf(vararg pairs: Pair<String, *>): Intent = intentOf<T>(bundleOf(*pairs))
 
 inline fun <reified T> Context.intentOf(bundle: Bundle): Intent =
@@ -21,7 +40,6 @@ fun dial(phoneNumber: String): Boolean =
     Intent(Intent.ACTION_DIAL, Uri.parse("tel:${Uri.encode(phoneNumber)}"))
         .startForActivity()
 
-@RequiresPermission(CALL_PHONE)
 fun makeCall(phoneNumber: String): Boolean =
     Intent(Intent.ACTION_CALL, Uri.parse("tel:${Uri.encode(phoneNumber)}"))
         .startForActivity()
@@ -78,7 +96,5 @@ fun Intent.noHistory(): Intent = addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY)
 fun Intent.singleTop(): Intent = addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
 
 fun Intent.grantReadUriPermission(): Intent = apply {
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-        addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
-    }
+    addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
 }

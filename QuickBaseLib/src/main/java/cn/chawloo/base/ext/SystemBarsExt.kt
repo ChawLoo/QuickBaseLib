@@ -14,18 +14,6 @@ import androidx.core.view.updateMargins
 import androidx.core.view.updatePadding
 import androidx.fragment.app.Fragment
 
-fun Fragment.immerseStatusBar(lightMode: Boolean = true) {
-    activity?.immerseStatusBar(lightMode)
-}
-
-fun Activity.immerseStatusBar(lightMode: Boolean = true) {
-    decorFitsSystemWindows = false
-    window.decorView.windowInsetsControllerCompat?.systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
-    transparentStatusBar()
-    isLightStatusBar = lightMode
-    contentView.addNavigationBarHeightToMarginBottom()
-}
-
 inline var Fragment.isLightStatusBar: Boolean
     get() = activity?.isLightStatusBar == true
     set(value) {
