@@ -30,7 +30,7 @@ android {
     kotlinOptions {
         jvmTarget = "17"
     }
-    viewBinding {
+    dataBinding {
         enable = true
     }
     namespace = "cn.chawloo.basedemo"

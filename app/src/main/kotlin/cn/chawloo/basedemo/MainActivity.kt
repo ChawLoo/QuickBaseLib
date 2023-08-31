@@ -1,5 +1,6 @@
 package cn.chawloo.basedemo
 
+import cn.chawloo.base.base.BaseAct
 import cn.chawloo.base.base.BaseActivity
 import cn.chawloo.base.ext.doClick
 import cn.chawloo.base.ext.longToast
@@ -10,8 +11,7 @@ import com.dylanc.viewbinding.binding
 import com.therouter.router.Route
 
 @Route(path = "MainActivity", description = "首页")
-class MainActivity : BaseActivity() {
-    private val vb by binding<ActivityMainBinding>()
+class MainActivity : BaseAct<ActivityMainBinding>(R.layout.activity_main) {
     override fun initialize() {
         vb.btnShowToast.doClick {
             val telNo = "010-12345678"

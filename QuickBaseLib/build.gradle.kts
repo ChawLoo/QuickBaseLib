@@ -46,12 +46,9 @@ dependencies {
     api(libs.multidex)
     api(libs.activity.ktx)
     api(libs.fragment.ktx)
-    api(libs.lifecycle.viewmodel)
-    api(libs.lifecycle.livedata)
     api(libs.annotation)
     api(libs.constraintlayout)
     api(libs.recyclerview)
-    api(libs.startup.runtime)
     api(libs.bundles.room)
 
 
@@ -64,6 +61,7 @@ dependencies {
     api(libs.toast)
     api(libs.okhttp)
     api(libs.retrofit)
+    api(libs.net)
     api(libs.xPermission)
     api(libs.mmkv)
     api(libs.viewbinding.ktx)
@@ -81,12 +79,25 @@ dependencies {
 }
 
 val androidSourcesJar = task<Jar>("androidSourcesJar") {
+    // 如果有Kotlin那么就需要打入dir
+    if (project.hasProperty("kotlin")) {
+        println("====> project kotlin")
+        from(android.sourceSets.getByName("main").java.srcDirs)
+    } else if (project.hasProperty("android")) {
+        println("====> project java")
+        from(android.sourceSets.getByName("main").java.srcDirs)
+    } else {
+        println("====> project java & kotlin")
+        from(sourceSets.getByName("main").allSource)
+    }
     archiveClassifier.set("sources")
-    from(android.sourceSets["main"].java.srcDirs)
     exclude("**/R.class")
     exclude("**/BuildConfig.class")
 }
-
+artifacts {
+    println("artifacts")
+    archives(androidSourcesJar)
+}
 publishing {
     val ver = "1.2.6"
     publications {
@@ -176,5 +187,3 @@ publishing {
 signing {
     sign(publishing.publications)
 }
-
-

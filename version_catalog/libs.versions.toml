@@ -6,58 +6,60 @@ format.version = "1.1"
 
 [versions]
 buildToolsVersion = "33.0.1"
-chucker = "4.0.0"
 coil = "2.4.0"
-compileSdk = "33"
+compileSdk = "34"
 compileSdkPreview = "UpsideDownCake"
-coroutines = "1.7.2"
-kotlin = "1.8.22"
-lifecycle = "2.6.1"
+coroutines = "1.7.3"
+gradleVer = "8.1.1"
+kotlin = "1.9.0"
 minSdk = "26"
 pictureSelector = "v3.11.1"
 room = "2.5.2"
 saf-log = "2.6.9"
-targetSdk = "33"
-therouter = "1.2.0-beta4"
+targetSdk = "34"
+therouter = "1.2.0-rc1"
 
 [libraries]
-accompanist-systemuicontroller = { group = "com.google.accompanist", name = "accompanist-systemuicontroller", version = "0.30.1" }
+accompanist-systemuicontroller = { group = "com.google.accompanist", name = "accompanist-systemuicontroller", version = "0.32.0" }
 activity-compose = { group = "androidx.activity", name = "activity-compose", version = "1.7.2" }
 activity-ktx = { group = "androidx.activity", name = "activity-ktx", version = "1.7.2" }
 androidautosize = { group = "com.github.JessYanCoding", name = "AndroidAutoSize", version = "v1.2.1" }
+androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version = "2023.08.00" }
 annotation = { group = "androidx.annotation", name = "annotation", version = "1.6.0" }
 appcompat = { group = "androidx.appcompat", name = "appcompat", version = "1.6.1" }
 banner = { group = "io.github.youth5201314", name = "banner", version = "2.2.2" }
 basePopup = { group = "io.github.razerdp", name = "BasePopup", version = "3.2.1" }
-brv = { group = "com.github.liangjingkanji", name = "BRV", version = "1.4.3" }
+brv = { group = "com.github.liangjingkanji", name = "BRV", version = "1.5.0" }
 brvah = { group = "com.github.CymChad", name = "BaseRecyclerViewAdapterHelper", version = "3.0.11" }
-chucker = { group = "com.github.chuckerteam.chucker", name = "library", version.ref = "chucker" }
-chucker-no-op = { group = "com.github.chuckerteam.chucker", name = "library", version.ref = "chucker" }
+chucker = { group = "com.github.chuckerteam.chucker", name = "library", version = "4.0.0" }
 coil = { group = "io.coil-kt", name = "coil", version.ref = "coil" }
 coil-gif = { group = "io.coil-kt", name = "coil-gif", version.ref = "coil" }
 compose-coil = { group = "io.coil-kt", name = "coil-compose", version.ref = "coil" }
+compose-material = { group = "androidx.compose.material", name = "material", version = "" }
+compose-material3 = { group = "androidx.compose.material3", name = "material3", version = "" }
+compose-runtime-livedata = { group = "androidx.compose.runtime", name = "runtime-livedata", version = "" }
+compose-ui = { group = "androidx.compose.ui", name = "ui", version = "" }
+compose-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling", version = "" }
+compose-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview", version = "" }
 constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version = "2.1.4" }
 constraintlayout-compose = { group = "androidx.constraintlayout", name = "constraintlayout-compose", version = "1.0.1" }
 core-ktx = { group = "androidx.core", name = "core-ktx", version = "1.10.1" }
 crashReport = { group = "com.tencent.bugly", name = "crashreport", version = "4.1.9.2" }
 fastjson = { group = "com.alibaba", name = "fastjson", version = "1.2.79" }
 flexbox = { group = "com.google.android.flexbox", name = "flexbox", version = "3.0.0" }
-fragment-ktx = { group = "androidx.fragment", name = "fragment-ktx", version = "1.6.0" }
+fragment-ktx = { group = "androidx.fragment", name = "fragment-ktx", version = "1.6.1" }
 immersionbar = { group = "com.geyifeng.immersionbar", name = "immersionbar", version = "3.2.2" }
 immersionbar-ktx = { group = "com.geyifeng.immersionbar", name = "immersionbar-ktx", version = "3.2.2" }
 jodatime = { group = "joda-time", name = "joda-time", version = "2.12.5" }
 junit = { group = "junit", name = "junit", version = "4.13.2" }
 kotlinx-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "coroutines" }
 kotlinx-coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "coroutines" }
-kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version = "1.5.1" }
-lifecycle-livedata = { group = "androidx.lifecycle", name = "lifecycle-livedata-ktx", version.ref = "lifecycle" }
-lifecycle-viewmodel = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycle" }
-lifecycle-viewmodel-compose = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-compose", version.ref = "lifecycle" }
+kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version = "1.6.0" }
 material = { group = "com.google.android.material", name = "material", version = "1.9.0" }
-mmkv = { group = "com.tencent", name = "mmkv-static", version = "1.3.0" }
+mmkv = { group = "com.tencent", name = "mmkv-static", version = "1.3.1" }
 multidex = { group = "androidx.multidex", name = "multidex", version = "2.0.1" }
-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version = "2.6.0" }
-net = { group = "com.github.liangjingkanji", name = "Net", version = "3.5.8" }
+navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version = "2.7.0" }
+net = { group = "com.github.liangjingkanji", name = "Net", version = "3.6.1" }
 okhttp = { group = "com.squareup.okhttp3", name = "okhttp", version = "4.11.0" }
 pictureSelector = { group = "io.github.lucksiege", name = "pictureselector", version.ref = "pictureSelector" }
 pictureSelector-camerax = { group = "io.github.lucksiege", name = "camerax", version.ref = "pictureSelector" }
@@ -72,7 +74,6 @@ room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "
 saf-log-core = { group = "com.github.fengzhizi715.SAF-Kotlin-log", name = "core", version.ref = "saf-log" }
 saf-log-okhttp = { group = "com.github.fengzhizi715", name = "saf-logginginterceptor", version = "v1.6.13" }
 splashscreen = { group = "androidx.core", name = "core-splashscreen", version = "1.0.1" }
-startup-runtime = { group = "androidx.startup", name = "startup-runtime", version = "1.1.1" }
 stdlib-jdk7 = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib-jdk7", version.ref = "kotlin" }
 stdlib-jdk8 = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib-jdk8", version.ref = "kotlin" }
 therouter = { group = "cn.therouter", name = "router", version.ref = "therouter" }
@@ -83,12 +84,12 @@ viewbinding-ktx-old = { group = "com.github.DylanCaiCoding.ViewBindingKTX", name
 wechat-sdk-android-without-mta = { group = "com.tencent.mm.opensdk", name = "wechat-sdk-android-without-mta", version = "6.8.0" }
 wheelView = { group = "com.github.zyyoona7.WheelPicker", name = "wheelview", version = "2.0.7" }
 x5webview = { group = "com.tencent.tbs", name = "tbssdk", version = "44286" }
-xPermission = { group = "com.github.getActivity", name = "XXPermissions", version = "18.2" }
+xPermission = { group = "com.github.getActivity", name = "XXPermissions", version = "18.3" }
 
 [bundles]
-androidx = ["core-ktx", "appcompat", "multidex", "activity-ktx", "fragment-ktx", "constraintlayout", "recyclerview", "startup-runtime", "splashscreen", "lifecycle-viewmodel", "lifecycle-livedata"]
+androidx = ["core-ktx", "appcompat", "multidex", "activity-ktx", "fragment-ktx", "constraintlayout", "recyclerview", "splashscreen"]
 coil = ["coil", "coil-gif"]
-compose-library = ["constraintlayout-compose", "navigation-compose", "activity-compose", "lifecycle-viewmodel-compose", "compose-coil"]
+compose-library = ["compose-material", "compose-material3", "compose-ui", "compose-ui-tooling-preview", "compose-runtime-livedata", "constraintlayout-compose", "navigation-compose", "activity-compose", "compose-coil"]
 coroutines = ["kotlinx-coroutines-core", "kotlinx-coroutines-android"]
 immersionbar = ["immersionbar", "immersionbar-ktx"]
 kotlin = ["stdlib-jdk7", "stdlib-jdk8", "reflect"]
@@ -97,9 +98,12 @@ room = ["room-runtime", "room-ktx"]
 saf-log = ["saf-log-core", "saf-log-okhttp"]
 
 [plugins]
+android-application = { id = "com.android.application", version.ref = "gradleVer" }
+android-library = { id = "com.android.library", version.ref = "gradleVer" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
 kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlin" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
-therouter = { id = "cn.therouter", version.ref = "therouter" }
+ksp = { id = "com.google.devtools.ksp", version = "1.9.0-1.0.11" }
+therouter = { id = "cn.therouter.agp8", version.ref = "therouter" }
 

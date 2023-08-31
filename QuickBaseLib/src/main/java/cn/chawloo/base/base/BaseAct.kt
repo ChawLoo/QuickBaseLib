@@ -6,22 +6,26 @@ import android.content.res.TypedArray
 import android.os.Build
 import android.os.Bundle
 import android.os.Looper
+import android.view.View
 import android.window.OnBackInvokedCallback
 import android.window.OnBackInvokedDispatcher
 import androidx.activity.addCallback
+import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.ViewDataBinding
 import cn.chawloo.base.R
 import cn.chawloo.base.delegate.IUpdate
 import cn.chawloo.base.delegate.UpdateDelegate
-import cn.chawloo.base.event.AntiShake
 import cn.chawloo.base.router.Router
 import cn.chawloo.base.utils.DeviceUtils
 import com.gyf.immersionbar.ktx.immersionBar
+import com.safframework.log.L
 import me.jessyan.autosize.AutoSizeCompat
 
 /**
- * Activity基类（不含业务）
- * @author Create by 鲁超 on 2022/6/7 0007 11:22:04
+ * TODO
+ * @author Create by 鲁超 on 2023/8/31 14:53
  *----------Dragon be here!----------/
  *       ┌─┐      ┌─┐
  *     ┌─┘─┴──────┘─┴─┐
@@ -42,11 +46,15 @@ import me.jessyan.autosize.AutoSizeCompat
  *          └─┴─┘   └─┴─┘
  *─────────────神兽出没───────────────/
  */
-const val BUNDLE_NAME = "bundle_name"
-
-abstract class BaseActivity : AppCompatActivity(), IUpdate by UpdateDelegate {
-    protected val util = AntiShake()
+abstract class BaseAct<B : ViewDataBinding>(@LayoutRes layoutId: Int = 0) : AppCompatActivity(layoutId), IUpdate by UpdateDelegate {
+    lateinit var vb: B
     private lateinit var onBackInvokedCallback: OnBackInvokedCallback
+    override fun setContentView(layoutResID: Int) {
+        val rootView = layoutInflater.inflate(layoutResID, null)
+        setContentView(rootView)
+        vb = DataBindingUtil.bind(rootView)!!
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initGlobalUIConfig()
@@ -80,12 +88,7 @@ abstract class BaseActivity : AppCompatActivity(), IUpdate by UpdateDelegate {
     }
 
     abstract fun initialize()
-
     open fun onClick() {}
-
-    /**
-     * 新版本的返回重写该方法
-     */
     open fun backPressed() {
         println("触发返回键拦截了")
         overridePendingTransition(R.anim.anim_activity_slide_left_in, R.anim.anim_activity_slide_right_out)

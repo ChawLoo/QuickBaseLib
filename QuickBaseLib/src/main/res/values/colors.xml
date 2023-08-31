@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="defaultTextColor">#4291f1</color>
+    <color name="defaultReachedColor">#4291f1</color>
+    <color name="defaultUnreachedColor">#cccccc</color>
+
     <color name="bg_color">#FFFFFF</color>
     <color name="divider_color">#eeeeee</color>
     <color name="black">#000000</color> <!-- 黑色 -->

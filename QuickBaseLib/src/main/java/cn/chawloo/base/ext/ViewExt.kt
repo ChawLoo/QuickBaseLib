@@ -37,7 +37,7 @@ import kotlin.reflect.KProperty
  *          └─┴─┘   └─┴─┘
  *─────────────神兽出没───────────────/
  */
-fun View.gone() {
+fun <T : View> T.gone() {
     if (this.visibility != View.GONE) {
         this.visibility = View.GONE
     }

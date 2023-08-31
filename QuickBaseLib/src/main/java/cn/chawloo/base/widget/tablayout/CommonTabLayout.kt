@@ -389,7 +389,7 @@ class CommonTabLayout @JvmOverloads constructor(context: Context, attrs: Attribu
 
     private var mIsFirstDraw = true
 
-    override fun onDraw(canvas: Canvas?) {
+    override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
         if (isInEditMode || mTabCount <= 0) {
             return

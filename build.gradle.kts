@@ -1,10 +1,13 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
+@Suppress("DSL_SCOPE_VIOLATION")
 plugins {
-    id("com.android.application").version("8.0.2").apply(false)
-    id("com.android.library").version("8.0.2").apply(false)
-    kotlin("android").version("1.8.21").apply(false)
-    id("com.google.devtools.ksp").version("1.8.21-1.0.11").apply(false)
-    id("cn.therouter").version("1.2.0-beta2").apply(false)
+    alias(libs.plugins.android.application) apply false
+    alias(libs.plugins.android.library) apply false
+    kotlin("android") version libs.versions.kotlin.get() apply false
+    kotlin("kapt") version libs.versions.kotlin.get() apply false
+    alias(libs.plugins.kotlin.serialization)
+    alias(libs.plugins.ksp) apply false
+    alias(libs.plugins.therouter) apply false
 }
 
 task<Delete>("clean") {
