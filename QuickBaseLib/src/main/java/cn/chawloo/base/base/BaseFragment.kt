@@ -1,5 +1,6 @@
 package cn.chawloo.base.base
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.annotation.LayoutRes
@@ -8,6 +9,7 @@ import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import cn.chawloo.base.delegate.IUpdate
 import cn.chawloo.base.delegate.UpdateDelegate
+import cn.chawloo.base.ext.asActivity
 
 /**
  * Fragment基类（不包含业务）
@@ -33,6 +35,13 @@ import cn.chawloo.base.delegate.UpdateDelegate
  *─────────────神兽出没───────────────/
  */
 abstract class BaseFragment<B : ViewDataBinding>(@LayoutRes layoutId: Int) : Fragment(layoutId), IUpdate by UpdateDelegate {
+    protected lateinit var mContext: Context
+
+    override fun onAttach(context: Context) {
+        mContext = context
+        super.onAttach(mContext)
+    }
+
     val vb: B
         get() = DataBindingUtil.bind(requireView())!!
 
