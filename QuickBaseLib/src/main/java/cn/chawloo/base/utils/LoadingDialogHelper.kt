@@ -7,7 +7,7 @@ import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.LifecycleOwner
 import cn.chawloo.base.base.BaseFragment
 import cn.chawloo.base.ext.lifecycleOwner
-import cn.chawloo.base.popup.LoadingPop
+import cn.chawloo.base.popup.LoadingDialog
 import com.safframework.log.L
 
 /**
@@ -34,7 +34,7 @@ import com.safframework.log.L
  *─────────────神兽出没───────────────/
  */
 object LoadingDialogHelper {
-    private val dialogQueen = LinkedHashMap<LifecycleOwner, LoadingPop>()
+    private val dialogQueen = LinkedHashMap<LifecycleOwner, LoadingDialog>()
     private val countQueen = LinkedHashMap<LifecycleOwner, Int>()
 
     @Synchronized
@@ -53,9 +53,9 @@ object LoadingDialogHelper {
                 countQueen[this@showLoading] = this + 1
             }
         } ?: run {
-            val loading = LoadingPop(this, msg)
+            val loading = LoadingDialog(this, msg)
             dialogQueen[this] = loading
-            loading.showPopupWindow()
+            loading.show()
             countQueen[this] = 1
         }
     }
@@ -77,9 +77,9 @@ object LoadingDialogHelper {
             }
         } ?: run {
             this.activity?.run {
-                val loading = LoadingPop(this, msg)
+                val loading = LoadingDialog(this, msg)
                 dialogQueen[this@showLoading] = loading
-                loading.showPopupWindow()
+                loading.show()
                 countQueen[this@showLoading] = 1
             } ?: L.e("宿主不存在")
         }

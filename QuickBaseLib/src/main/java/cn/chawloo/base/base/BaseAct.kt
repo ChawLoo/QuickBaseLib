@@ -6,7 +6,6 @@ import android.content.res.TypedArray
 import android.os.Build
 import android.os.Bundle
 import android.os.Looper
-import android.view.View
 import android.window.OnBackInvokedCallback
 import android.window.OnBackInvokedDispatcher
 import androidx.activity.addCallback
@@ -20,7 +19,6 @@ import cn.chawloo.base.delegate.UpdateDelegate
 import cn.chawloo.base.router.Router
 import cn.chawloo.base.utils.DeviceUtils
 import com.gyf.immersionbar.ktx.immersionBar
-import com.safframework.log.L
 import me.jessyan.autosize.AutoSizeCompat
 
 /**

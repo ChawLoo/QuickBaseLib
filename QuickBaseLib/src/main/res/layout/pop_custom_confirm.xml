@@ -1,65 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_margin="40dp"
-    android:background="@drawable/pop_white_bg"
-    android:elevation="10dp"
-    android:orientation="vertical">
-
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_content"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@id/ll_confirm_button"
-        android:layout_weight="1"
-        android:gravity="center_horizontal"
-        android:maxLines="3"
-        android:paddingStart="12dp"
-        android:paddingTop="24dp"
-        android:paddingEnd="12dp"
-        android:paddingBottom="24dp"
-        android:textColor="@color/color_99"
-        android:textSize="14sp"
-        tools:text="请确认是否进行此操作？" />
-
-    <View style="@style/divider_horizontal" />
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/ll_confirm_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_margin="40dp"
+        android:background="@drawable/pop_white_bg"
+        android:elevation="10dp"
+        android:orientation="vertical">
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tv_cancel"
-            android:layout_width="0dp"
+            android:id="@+id/tv_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_above="@id/ll_confirm_button"
             android:layout_weight="1"
-            android:gravity="center"
-            android:padding="10dp"
-            android:text="取消"
+            android:gravity="center_horizontal"
+            android:maxLines="3"
+            android:paddingStart="12dp"
+            android:paddingTop="24dp"
+            android:paddingEnd="12dp"
+            android:paddingBottom="24dp"
             android:textColor="@color/color_99"
             android:textSize="14sp"
-            android:visibility="gone" />
+            tools:text="请确认是否进行此操作？" />
 
-        <View
-            android:id="@+id/v_line"
-            style="@style/divider_vertical"
-            android:visibility="gone" />
+        <View style="@style/divider_horizontal" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tv_confirm"
-            android:layout_width="0dp"
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/ll_confirm_button"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:padding="10dp"
-            android:text="确认"
-            android:textColor="@color/theme_color"
-            android:textSize="14sp"
-            android:textStyle="bold" />
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_cancel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="取消"
+                android:textColor="@color/color_99"
+                android:textSize="14sp"
+                android:visibility="gone" />
+
+            <View
+                android:id="@+id/v_line"
+                style="@style/divider_vertical"
+                android:visibility="gone" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_confirm"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="确认"
+                android:textColor="@color/theme_color"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
     </androidx.appcompat.widget.LinearLayoutCompat>
-</androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

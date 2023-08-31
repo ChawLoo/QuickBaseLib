@@ -34,7 +34,7 @@ class BottomListPickerPopupWindow(context: Context, dataList: List<String>, pick
             .setup {
                 addType<String>(R.layout.item_simple_bottom_list)
                 onBind {
-                    val binding = ItemSimpleBottomListBinding.bind(itemView)
+                    val binding = getBinding<ItemSimpleBottomListBinding>()
                     binding.tvValue.text = getModel<String>()
                     itemView.background = when (layoutPosition) {
                         0 -> ContextCompat.getDrawable(context, R.drawable.shape_list_corner_white_bg)

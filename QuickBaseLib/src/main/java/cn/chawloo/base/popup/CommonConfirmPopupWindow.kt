@@ -4,8 +4,10 @@ import android.content.Context
 import android.text.SpannableStringBuilder
 import android.text.SpannedString
 import android.view.Gravity
+import android.view.LayoutInflater
 import android.view.animation.AnimationUtils
 import androidx.core.text.buildSpannedString
+import androidx.databinding.DataBindingUtil
 import cn.chawloo.base.R
 import cn.chawloo.base.databinding.PopCustomConfirmBinding
 import cn.chawloo.base.ext.doClick
@@ -51,11 +53,11 @@ class CommonConfirmPopupWindow(context: Context) : BasePopupWindow(context) {
     private val vb: PopCustomConfirmBinding
 
     init {
-        setContentView(R.layout.pop_custom_confirm)
+        vb = DataBindingUtil.inflate(LayoutInflater.from(context), R.layout.pop_custom_confirm, null, false)
+        contentView = vb.root
         popupGravity = Gravity.CENTER
         showAnimation = AnimationUtils.loadAnimation(context, R.anim.pop_middle_show)
         dismissAnimation = AnimationUtils.loadAnimation(context, R.anim.pop_middle_dismiss)
-        vb = PopCustomConfirmBinding.bind(contentView)
     }
 
     class Builder(private val context: Context) {

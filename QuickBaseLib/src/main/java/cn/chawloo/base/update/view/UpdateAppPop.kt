@@ -9,6 +9,7 @@ import android.os.Bundle
 import android.os.Environment
 import android.text.method.ScrollingMovementMethod
 import androidx.core.content.FileProvider
+import androidx.databinding.DataBindingUtil
 import cn.chawloo.base.R
 import cn.chawloo.base.databinding.PopUpdateAppBinding
 import cn.chawloo.base.ext.doClick
@@ -22,7 +23,6 @@ import com.drake.net.Get
 import com.drake.net.component.Progress
 import com.drake.net.interfaces.ProgressListener
 import com.drake.net.scope.AndroidScope
-import com.drake.net.scope.NetCoroutineScope
 import com.drake.net.utils.scopeNet
 import java.io.File
 
@@ -57,7 +57,7 @@ class UpdateAppPop<T : IUpdateBean>(
     private lateinit var vb: PopUpdateAppBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        vb = PopUpdateAppBinding.inflate(layoutInflater)
+        vb = DataBindingUtil.inflate(layoutInflater, R.layout.pop_update_app, null, false)
         setContentView(vb.root)
         window?.setBackgroundDrawableResource(android.R.color.transparent)//去掉白色背景
         if (info.isForceUpdate) {
@@ -74,7 +74,7 @@ class UpdateAppPop<T : IUpdateBean>(
         vb.tvUpdateInfo.movementMethod = ScrollingMovementMethod()
         vb.tvUpdateInfo.text = info.verInfo
         vb.btnUpgrade.doClick {
-            info.url?.takeIf { it.isNotBlank() }?.run {
+            info.url.takeIf { it.isNotBlank() }?.run {
                 try {
                     download(this)
                 } catch (e: Exception) {
@@ -89,9 +89,9 @@ class UpdateAppPop<T : IUpdateBean>(
         }
     }
 
-    override fun hide() {
+    override fun dismiss() {
         downloadJob?.cancel()
-        super.hide()
+        super.dismiss()
     }
 
     private var systemDownloadId = -1L
@@ -99,7 +99,7 @@ class UpdateAppPop<T : IUpdateBean>(
         try {
             e.printStackTrace()
             toast("下载失败，正在尝试使用系统下载器，请稍等")
-            info.url?.takeIf { it.isNotBlank() }?.run {
+            info.url.takeIf { it.isNotBlank() }?.run {
                 DownloadUtils.clearCurrentTask(context, systemDownloadId)
                 DownloadUtils.downloadBySystem(context, this, "temp.apk", info.verInfo)
             }

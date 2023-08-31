@@ -28,6 +28,11 @@
         <item name="progress_unreached_bar_height">3dp</item>
     </style>
 
+    <style name="LoadingDialog" parent="Theme.AppCompat.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:backgroundDimEnabled">true</item>
+    </style>
+
     <style name="UpdateDialog" parent="Theme.AppCompat.Dialog">
         <item name="android:windowShowAnimation">@anim/pop_middle_show</item>
         <item name="android:windowHideAnimation">@anim/pop_middle_dismiss</item>
