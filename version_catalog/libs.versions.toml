@@ -17,7 +17,7 @@ pictureSelector = "v3.11.1"
 room = "2.5.2"
 saf-log = "2.6.9"
 targetSdk = "34"
-therouter = "1.2.0-rc1"
+therouter = "1.2.0-rc2"
 
 [libraries]
 accompanist-systemuicontroller = { group = "com.google.accompanist", name = "accompanist-systemuicontroller", version = "0.32.0" }
@@ -29,7 +29,7 @@ annotation = { group = "androidx.annotation", name = "annotation", version = "1.
 appcompat = { group = "androidx.appcompat", name = "appcompat", version = "1.6.1" }
 banner = { group = "io.github.youth5201314", name = "banner", version = "2.2.2" }
 basePopup = { group = "io.github.razerdp", name = "BasePopup", version = "3.2.1" }
-brv = { group = "com.github.liangjingkanji", name = "BRV", version = "1.5.0" }
+brv = { group = "com.github.liangjingkanji", name = "BRV", version = "1.5.2" }
 brvah = { group = "com.github.CymChad", name = "BaseRecyclerViewAdapterHelper", version = "3.0.11" }
 chucker = { group = "com.github.chuckerteam.chucker", name = "library", version = "4.0.0" }
 coil = { group = "io.coil-kt", name = "coil", version.ref = "coil" }

@@ -35,22 +35,8 @@ android {
 }
 
 dependencies {
-    api(libs.bundles.kotlin)
-    api(libs.bundles.coroutines)
-    api(libs.kotlinx.serialization.json)
-
-    api(libs.core.ktx)
-    api(libs.appcompat)
-    api(libs.multidex)
-    api(libs.activity.ktx)
-    api(libs.fragment.ktx)
-    api(libs.annotation)
-    api(libs.constraintlayout)
-    api(libs.recyclerview)
-    api(libs.bundles.room)
-
-
     api(libs.material)
+    api(libs.kotlinx.serialization.json)
     api(libs.brv)
     api(libs.jodatime)
     api(libs.therouter)
@@ -68,7 +54,14 @@ dependencies {
     api(libs.wheelView)
     api(libs.x5webview)
     api(libs.banner)
+    api(libs.flexbox)
 
+
+    api(libs.bundles.androidx)
+    api(libs.bundles.room)
+    api(libs.bundles.kotlin)
+    api(libs.bundles.coroutines)
+    api(libs.bundles.pictureSelector)
     api(libs.bundles.coil)
     api(libs.bundles.saf.log)
     api(libs.bundles.immersionbar)
@@ -93,16 +86,14 @@ val androidSourcesJar = task<Jar>("androidSourcesJar") {
     exclude("**/BuildConfig.class")
 }
 artifacts {
-    println("artifacts")
     archives(androidSourcesJar)
 }
 publishing {
-    val ver = "1.2.6"
     publications {
         create<MavenPublication>("maven") {
             groupId = "io.github.chawloo"
             artifactId = "QuickBaseLib"
-            version = ver
+            version = "1.3.0"
             artifact("$buildDir/outputs/aar/${project.name}-release.aar")
             artifact(androidSourcesJar)
             pom {
@@ -166,17 +157,17 @@ publishing {
     }
     repositories {
         maven {
-            val releaseRepoUrl = uri("https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/")
+            isAllowInsecureProtocol = true
+            val releaseRepoUrl = uri("http://47.97.187.94:8536/repository/maven-android/")
             val snapshotRepoUrl = uri("https://s01.oss.sonatype.org/content/repositories/snapshots")
-            url = if (ver.endsWith("SNAPSHOT")) {
+            url = if (version.toString().endsWith("SNAPSHOT")) {
                 snapshotRepoUrl
             } else {
                 releaseRepoUrl
             }
             credentials {
-                username = rootProject.properties["maven.username"].toString()
-                val pwd = rootProject.properties["maven.password"].toString()
-                password = pwd
+                username = rootProject.properties["maven.local.username"].toString()
+                password = rootProject.properties["maven.local.password"].toString()
             }
         }
     }
