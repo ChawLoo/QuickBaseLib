@@ -93,7 +93,7 @@ publishing {
         create<MavenPublication>("maven") {
             groupId = "io.github.chawloo"
             artifactId = "QuickBaseLib"
-            version = "1.3.0"
+            version = "1.3.1"
             artifact("$buildDir/outputs/aar/${project.name}-release.aar")
             artifact(androidSourcesJar)
             pom {
@@ -157,17 +157,16 @@ publishing {
     }
     repositories {
         maven {
-            isAllowInsecureProtocol = true
-            val releaseRepoUrl = uri("http://47.97.187.94:8536/repository/maven-android/")
-            val snapshotRepoUrl = uri("https://s01.oss.sonatype.org/content/repositories/snapshots")
+            val releaseRepoUrl = uri("https://packages.aliyun.com/maven/repository/2418478-release-GhmPUt/")
+            val snapshotRepoUrl = uri("https://packages.aliyun.com/maven/repository/2418478-snapshot-CGlsbs/")
             url = if (version.toString().endsWith("SNAPSHOT")) {
                 snapshotRepoUrl
             } else {
                 releaseRepoUrl
             }
             credentials {
-                username = rootProject.properties["maven.local.username"].toString()
-                password = rootProject.properties["maven.local.password"].toString()
+                username = "609399173a10edbf367f5264"
+                password = "=RTs0bvMruGT"
             }
         }
     }
