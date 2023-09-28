@@ -36,7 +36,7 @@ object ScreenUtils {
      * @param context [Context]
      * @return 屏幕尺寸
      */
-    fun getScreenSize(context: Context): IntArray? {
+    fun getScreenSize(context: Context): IntArray {
         val size = IntArray(2)
         val w = context.getSystemService(Context.WINDOW_SERVICE) as WindowManager
         val d = w.defaultDisplay
@@ -53,7 +53,7 @@ object ScreenUtils {
      * @param context [Context]
      * @return 屏幕尺寸
      */
-    fun getRawScreenSize(context: Context): IntArray? {
+    fun getRawScreenSize(context: Context): IntArray {
         val size = IntArray(2)
         val w = context.getSystemService(Context.WINDOW_SERVICE) as WindowManager
         val d = w.defaultDisplay

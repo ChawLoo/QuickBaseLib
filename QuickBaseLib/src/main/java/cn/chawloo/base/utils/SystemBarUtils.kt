@@ -8,7 +8,6 @@ import android.provider.Settings
 import androidx.annotation.ColorInt
 import androidx.annotation.ColorRes
 import androidx.appcompat.app.AppCompatActivity
-import me.jessyan.autosize.utils.ScreenUtils
 
 object SystemBarUtils {
     fun AppCompatActivity.transparentStatusBar() {
