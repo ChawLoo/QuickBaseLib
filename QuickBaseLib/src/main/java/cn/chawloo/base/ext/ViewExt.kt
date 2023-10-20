@@ -1,16 +1,12 @@
 package cn.chawloo.base.ext
 
-import android.app.Activity
 import android.view.View
 import android.widget.CheckBox
 import android.widget.TextView
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
-import androidx.fragment.app.Fragment
 import cn.chawloo.base.base.BaseLibConfig
-import cn.chawloo.base.event.AopClickUtil
-import com.safframework.log.L
 import kotlin.properties.ReadWriteProperty
 import kotlin.reflect.KProperty
 
@@ -99,35 +95,6 @@ fun CheckBox.reverseChecked() {
 
 fun TextView.clear() {
     this.text = ""
-}
-
-
-fun Activity.setClickViews(vararg views: View, singleTime: Int = BaseLibConfig.clickIntervals, onClick: (View) -> Unit) {
-    views.forEach { v ->
-        v.setOnClickListener {
-            if (!AopClickUtil.isFastDoubleClick(it, singleTime)) {
-                hideSoftKeyboard()
-                // 不是快速点击，执行原方法
-                onClick(it)
-            } else {
-                L.e("拦截快速点击")
-            }
-        }
-    }
-}
-
-fun Fragment.setClickViews(vararg views: View, singleTime: Int = BaseLibConfig.clickIntervals, onClick: (View) -> Unit) {
-    views.forEach { v ->
-        v.setOnClickListener {
-            if (!AopClickUtil.isFastDoubleClick(it, singleTime)) {
-                activity?.hideSoftKeyboard()
-                // 不是快速点击，执行原方法
-                onClick.invoke(it)
-            } else {
-                L.e("拦截快速点击")
-            }
-        }
-    }
 }
 
 fun <T : View> List<T>.doClick(clickIntervals: Int = BaseLibConfig.clickIntervals, isSharingIntervals: Boolean = false, block: T.() -> Unit) =

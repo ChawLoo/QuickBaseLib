@@ -37,7 +37,7 @@ android {
 }
 
 dependencies {
-    implementation("io.github.chawloo:QuickBaseLib:1.3.1")
+    implementation(libs.base)
     testImplementation(libs.junit)
     api(libs.therouter)
     ksp(libs.therouter.apt)

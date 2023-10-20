@@ -13,7 +13,6 @@ import androidx.appcompat.app.AppCompatActivity
 import cn.chawloo.base.R
 import cn.chawloo.base.delegate.IUpdate
 import cn.chawloo.base.delegate.UpdateDelegate
-import cn.chawloo.base.event.AntiShake
 import cn.chawloo.base.router.Router
 import cn.chawloo.base.utils.DeviceUtils
 import com.gyf.immersionbar.ktx.immersionBar
@@ -45,10 +44,15 @@ import me.jessyan.autosize.AutoSizeCompat
 const val BUNDLE_NAME = "bundle_name"
 
 abstract class BaseActivity : AppCompatActivity(), IUpdate by UpdateDelegate {
-    protected val util = AntiShake()
     private lateinit var onBackInvokedCallback: OnBackInvokedCallback
+    private var isForcePortrait = true
+    fun isForcePortrait(): Boolean {
+        return true
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        isForcePortrait()
         initGlobalUIConfig()
         Router.inject(this)
         if (DeviceUtils.isLatestT()) {
@@ -68,7 +72,9 @@ abstract class BaseActivity : AppCompatActivity(), IUpdate by UpdateDelegate {
      * 设置一些沉浸式   横竖屏等全局UI参数
      */
     private fun initGlobalUIConfig() {
-        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+        if (isForcePortrait) {
+            requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+        }
         immersionBar {
             fitsSystemWindows(true)
             transparentStatusBar()

@@ -47,6 +47,12 @@ import me.jessyan.autosize.AutoSizeCompat
 abstract class BaseAct<B : ViewDataBinding>(@LayoutRes layoutId: Int = 0) : AppCompatActivity(layoutId), IUpdate by UpdateDelegate {
     lateinit var vb: B
     private lateinit var onBackInvokedCallback: OnBackInvokedCallback
+    private var isForcePortrait = true
+
+    fun isForcePortrait(): Boolean {
+        return true
+    }
+
     override fun setContentView(layoutResID: Int) {
         val rootView = layoutInflater.inflate(layoutResID, null)
         setContentView(rootView)
@@ -55,6 +61,7 @@ abstract class BaseAct<B : ViewDataBinding>(@LayoutRes layoutId: Int = 0) : AppC
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        isForcePortrait()
         initGlobalUIConfig()
         Router.inject(this)
         if (DeviceUtils.isLatestT()) {
@@ -74,7 +81,9 @@ abstract class BaseAct<B : ViewDataBinding>(@LayoutRes layoutId: Int = 0) : AppC
      * 设置一些沉浸式   横竖屏等全局UI参数
      */
     private fun initGlobalUIConfig() {
-        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+        if (isForcePortrait) {
+            requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+        }
         immersionBar {
             fitsSystemWindows(true)
             transparentStatusBar()

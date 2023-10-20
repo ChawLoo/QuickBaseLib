@@ -1,6 +1,6 @@
 package cn.chawloo.base.ext
 
-import me.jessyan.autosize.utils.AutoSizeUtils
+import android.util.TypedValue
 
 /**
  * Dp换算
@@ -8,17 +8,18 @@ import me.jessyan.autosize.utils.AutoSizeUtils
  */
 val Int.dp: Int
     get() {
-        return AutoSizeUtils.dp2px(application, this.toFloat())
+        return (TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, this.toFloat(), application.resources.displayMetrics) + 0.5f).toInt()
     }
 val Float.dp: Float
     get() {
-        return AutoSizeUtils.dp2px(application, this).toFloat()
+        return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, this, application.resources.displayMetrics) + 0.5f
+
     }
 val Int.sp: Int
     get() {
-        return AutoSizeUtils.sp2px(application, this.toFloat())
+        return (TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, this.toFloat(), application.resources.displayMetrics) + 0.5f).toInt()
     }
 val Float.sp: Float
     get() {
-        return AutoSizeUtils.sp2px(application, this).toFloat()
+        return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, this, application.resources.displayMetrics) + 0.5f
     }
