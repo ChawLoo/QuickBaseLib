@@ -1,1 +1,9 @@
-[]
+[
+  {
+    "path": "MainActivity",
+    "className": "cn.chawloo.basedemo.MainActivity",
+    "action": "",
+    "description": "首页",
+    "params": {}
+  }
+]

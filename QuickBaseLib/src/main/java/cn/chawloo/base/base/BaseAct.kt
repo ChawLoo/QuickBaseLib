@@ -49,7 +49,7 @@ abstract class BaseAct<B : ViewDataBinding>(@LayoutRes layoutId: Int = 0) : AppC
     private lateinit var onBackInvokedCallback: OnBackInvokedCallback
     private var isForcePortrait = true
 
-    fun isForcePortrait(): Boolean {
+    protected open fun isForcePortrait(): Boolean {
         return true
     }
 
@@ -61,7 +61,7 @@ abstract class BaseAct<B : ViewDataBinding>(@LayoutRes layoutId: Int = 0) : AppC
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        isForcePortrait()
+        isForcePortrait = isForcePortrait()
         initGlobalUIConfig()
         Router.inject(this)
         if (DeviceUtils.isLatestT()) {

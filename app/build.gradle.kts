@@ -37,7 +37,9 @@ android {
 }
 
 dependencies {
+
     implementation(libs.base)
+//    implementation(project(":QuickBaseLib"))
     testImplementation(libs.junit)
     api(libs.therouter)
     ksp(libs.therouter.apt)

@@ -46,13 +46,13 @@ const val BUNDLE_NAME = "bundle_name"
 abstract class BaseActivity : AppCompatActivity(), IUpdate by UpdateDelegate {
     private lateinit var onBackInvokedCallback: OnBackInvokedCallback
     private var isForcePortrait = true
-    fun isForcePortrait(): Boolean {
+    protected open fun isForcePortrait(): Boolean {
         return true
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        isForcePortrait()
+        isForcePortrait = isForcePortrait()
         initGlobalUIConfig()
         Router.inject(this)
         if (DeviceUtils.isLatestT()) {
