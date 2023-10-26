@@ -19,11 +19,12 @@ dependencyResolutionManagement {
     }
     versionCatalogs {
         create("libs") {
-            from("io.github.chawloo:VersionControlPlugin:1.3.3")
-            library("base","io.github.chawloo","QuickBaseLib").version("1.3.8")
+            from("io.github.chawloo:VersionControlPlugin:1.4.1")
+            library("base","io.github.chawloo","QuickBaseLib").version("1.4.0")
         }
     }
 }
 rootProject.name = "QuickBaseLib"
 include(":app")
 include(":QuickBaseLib")
+include(":VersionControlPlugin")
