@@ -10,10 +10,10 @@ catalog {
         version("minSdk", "26")
         version("targetSdk", "34")
         version("compileSdk", "34")
-        version("buildToolsVersion", "33.0.1")
+        version("buildToolsVersion", "34.0.0")
         version("compileSdkPreview", "UpsideDownCake")
-        version("kotlin", "1.9.10")
-        version("gradleVer", "8.1.3")
+        version("kotlin", "1.9.20")
+        version("gradleVer", "8.2.0")
 
         plugin("android-application", "com.android.application").versionRef("gradleVer")
         plugin("android-library", "com.android.library").versionRef("gradleVer")
@@ -21,7 +21,7 @@ catalog {
         plugin("kotlin-kapt", "org.jetbrains.kotlin.kapt").versionRef("kotlin")
         plugin("kotlin-parcelize", "org.jetbrains.kotlin.plugin.parcelize").versionRef("kotlin")
         plugin("kotlin-serialization", "org.jetbrains.kotlin.plugin.serialization").versionRef("kotlin")
-        plugin("ksp", "com.google.devtools.ksp").version("1.9.10-1.0.13")
+        plugin("ksp", "com.google.devtools.ksp").version("1.9.20-1.0.14")
 
 
         library("stdlib-jdk7", "org.jetbrains.kotlin", "kotlin-stdlib-jdk7").versionRef("kotlin")
@@ -98,7 +98,7 @@ catalog {
         library("banner", "io.github.youth5201314", "banner").version("2.2.2")
         library("flexbox", "com.google.android.flexbox", "flexbox").version("3.0.0")
 
-        version("therouter", "1.2.1")
+        version("therouter", "1.2.2-rc1")
         library("therouter", "cn.therouter", "router").versionRef("therouter")
         library("therouter-apt", "cn.therouter", "apt").versionRef("therouter")
         plugin("therouter", "cn.therouter.agp8").versionRef("therouter")
@@ -127,7 +127,7 @@ catalog {
         bundle("saf-log", listOf("saf-log-core", "saf-log-okhttp"))
 
 
-        library("x5webview", "com.tencent.tbs", "tbssdk").version("44339")
+        library("x5webview", "com.tencent.tbs", "tbssdk").version("44286")
         library("wechat-sdk-android-without-mta", "com.tencent.mm.opensdk", "wechat-sdk-android-without-mta").version("6.8.0")
 
         version("coil", "2.5.0")
@@ -173,7 +173,7 @@ publishing {
         create<MavenPublication>("maven") {
             groupId = "io.github.chawloo"
             artifactId = "VersionControlPlugin"
-            version = "1.4.2"
+            version = "1.4.4"
             from(components["versionCatalog"])
             pom {
                 name.set("VersionControlPlugin")

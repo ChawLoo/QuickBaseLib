@@ -1,6 +1,7 @@
 pluginManagement {
     repositories {
         gradlePluginPortal()
+        mavenCentral()
         google()
     }
 }
@@ -14,13 +15,14 @@ dependencyResolutionManagement {
                 password = "=RTs0bvMruGT"
             }
         }
+        mavenCentral()
         google()
         maven(url = "https://jitpack.io")
     }
     versionCatalogs {
         create("libs") {
-            from("io.github.chawloo:VersionControlPlugin:1.4.2")
-            library("base","io.github.chawloo","QuickBaseLib").version("1.4.0")
+            from("io.github.chawloo:VersionControlPlugin:1.4.4")
+            library("base","io.github.chawloo","QuickBaseLib").version("1.4.2")
         }
     }
 }
