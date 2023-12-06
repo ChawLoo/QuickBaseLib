@@ -6,7 +6,7 @@
     android:clipChildren="false"
     android:clipToPadding="false">
 
-    <LinearLayout
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/ll_tap"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -19,7 +19,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:singleLine="true" />
-    </LinearLayout>
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
     <cn.chawloo.base.widget.tablayout.MsgView
         android:id="@+id/rtv_msg_tip"

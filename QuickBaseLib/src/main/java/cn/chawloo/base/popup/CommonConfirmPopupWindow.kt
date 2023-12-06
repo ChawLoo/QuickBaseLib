@@ -53,7 +53,8 @@ class CommonConfirmPopupWindow(context: Context) : BasePopupWindow(context) {
     private val vb: PopCustomConfirmBinding
 
     init {
-        vb = DataBindingUtil.inflate(LayoutInflater.from(context), R.layout.pop_custom_confirm, null, false)
+        setContentView(R.layout.pop_custom_confirm)
+        vb = PopCustomConfirmBinding.bind(contentView)
         contentView = vb.root
         popupGravity = Gravity.CENTER
         showAnimation = AnimationUtils.loadAnimation(context, R.anim.pop_middle_show)

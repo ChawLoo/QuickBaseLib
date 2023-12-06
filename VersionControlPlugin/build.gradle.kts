@@ -68,7 +68,7 @@ catalog {
 
 
 
-        version("room", "2.6.0")
+        version("room", "2.6.1")
         library("room-runtime", "androidx.room", "room-runtime").versionRef("room")
         library("room-ktx", "androidx.room", "room-ktx").versionRef("room")
         library("room-compiler", "androidx.room", "room-compiler").versionRef("room")
@@ -83,9 +83,7 @@ catalog {
 
         library("chucker", "com.github.chuckerteam.chucker", "library").version("4.0.0")
 
-        library("brvah", "com.github.CymChad", "BaseRecyclerViewAdapterHelper").version("3.0.11")
         library("kotlinx-serialization-json", "org.jetbrains.kotlinx", "kotlinx-serialization-json").version("1.6.1")
-        library("fastjson", "com.alibaba", "fastjson").version("1.2.79")
         library("jodatime", "joda-time", "joda-time").version("2.12.5")
         library("crashReport", "com.tencent.bugly", "crashreport").version("4.1.9.2")
         library("basePopup", "io.github.razerdp", "BasePopup").version("3.2.1")
@@ -93,12 +91,11 @@ catalog {
         library("xPermission", "com.github.getActivity", "XXPermissions").version("18.5")
         library("wheelView", "com.github.zyyoona7.WheelPicker", "wheelview").version("2.0.7")
         library("toast", "com.github.getActivity", "Toaster").version("12.6")
-        library("viewbinding-ktx-old", "com.github.DylanCaiCoding.ViewBindingKTX", "viewbinding-ktx").version("1.2.2")
         library("viewbinding-ktx", "com.github.DylanCaiCoding.ViewBindingKTX", "viewbinding-ktx").version("2.1.0")
         library("banner", "io.github.youth5201314", "banner").version("2.2.2")
         library("flexbox", "com.google.android.flexbox", "flexbox").version("3.0.0")
 
-        version("therouter", "1.2.2-rc1")
+        version("therouter", "1.2.2-rc2")
         library("therouter", "cn.therouter", "router").versionRef("therouter")
         library("therouter-apt", "cn.therouter", "apt").versionRef("therouter")
         plugin("therouter", "cn.therouter.agp8").versionRef("therouter")
@@ -173,7 +170,7 @@ publishing {
         create<MavenPublication>("maven") {
             groupId = "io.github.chawloo"
             artifactId = "VersionControlPlugin"
-            version = "1.4.4"
+            version = "1.4.6"
             from(components["versionCatalog"])
             pom {
                 name.set("VersionControlPlugin")
@@ -255,10 +252,10 @@ signing {
 }
 
 android {
-    compileSdk = 33
+    compileSdk = libs.versions.compileSdk.get().toIntOrNull()
 
     defaultConfig {
-        minSdk = 21
+        minSdk = libs.versions.minSdk.get().toIntOrNull()
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
     }

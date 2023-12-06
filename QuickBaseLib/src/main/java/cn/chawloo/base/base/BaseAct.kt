@@ -9,15 +9,15 @@ import android.os.Looper
 import android.window.OnBackInvokedCallback
 import android.window.OnBackInvokedDispatcher
 import androidx.activity.addCallback
-import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.DataBindingUtil
-import androidx.databinding.ViewDataBinding
+import androidx.viewbinding.ViewBinding
 import cn.chawloo.base.R
 import cn.chawloo.base.delegate.IUpdate
 import cn.chawloo.base.delegate.UpdateDelegate
 import cn.chawloo.base.router.Router
 import cn.chawloo.base.utils.DeviceUtils
+import com.dylanc.viewbinding.base.ActivityBinding
+import com.dylanc.viewbinding.base.ActivityBindingDelegate
 import com.gyf.immersionbar.ktx.immersionBar
 import me.jessyan.autosize.AutoSizeCompat
 
@@ -44,8 +44,8 @@ import me.jessyan.autosize.AutoSizeCompat
  *          └─┴─┘   └─┴─┘
  *─────────────神兽出没───────────────/
  */
-abstract class BaseAct<B : ViewDataBinding>(@LayoutRes layoutId: Int = 0) : AppCompatActivity(layoutId), IUpdate by UpdateDelegate {
-    lateinit var vb: B
+abstract class BaseAct<B : ViewBinding> : AppCompatActivity(), IUpdate by UpdateDelegate, ActivityBinding<B> by ActivityBindingDelegate() {
+
     private lateinit var onBackInvokedCallback: OnBackInvokedCallback
     private var isForcePortrait = true
 
@@ -53,14 +53,10 @@ abstract class BaseAct<B : ViewDataBinding>(@LayoutRes layoutId: Int = 0) : AppC
         return true
     }
 
-    override fun setContentView(layoutResID: Int) {
-        val rootView = layoutInflater.inflate(layoutResID, null)
-        setContentView(rootView)
-        vb = DataBindingUtil.bind(rootView)!!
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentViewWithBinding()
         isForcePortrait = isForcePortrait()
         initGlobalUIConfig()
         Router.inject(this)
