@@ -2,13 +2,18 @@ package cn.chawloo.base.base
 
 import android.content.Context
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
+import androidx.viewbinding.ViewBinding
 import cn.chawloo.base.delegate.IUpdate
 import cn.chawloo.base.delegate.UpdateDelegate
+import cn.chawloo.base.viewbinding.FragmentBinding
+import cn.chawloo.base.viewbinding.FragmentBindingDelegate
 
 /**
  * Fragment基类（不包含业务）
@@ -33,7 +38,7 @@ import cn.chawloo.base.delegate.UpdateDelegate
  *          └─┴─┘   └─┴─┘
  *─────────────神兽出没───────────────/
  */
-abstract class BaseFragment<B : ViewDataBinding>(@LayoutRes layoutId: Int) : Fragment(layoutId), IUpdate by UpdateDelegate {
+abstract class BaseFragment<VB : ViewBinding>(@LayoutRes layoutId: Int) : Fragment(layoutId), IUpdate by UpdateDelegate, FragmentBinding<VB> by FragmentBindingDelegate<VB>() {
     protected lateinit var mContext: Context
 
     override fun onAttach(context: Context) {
@@ -41,12 +46,12 @@ abstract class BaseFragment<B : ViewDataBinding>(@LayoutRes layoutId: Int) : Fra
         super.onAttach(mContext)
     }
 
-    val vb: B
-        get() = DataBindingUtil.bind(requireView())!!
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        return createViewWithBinding(inflater, container)
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        DataBindingUtil.bind<B>(view)
         initialize()
     }
 

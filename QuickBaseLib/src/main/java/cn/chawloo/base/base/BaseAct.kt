@@ -44,7 +44,7 @@ import me.jessyan.autosize.AutoSizeCompat
  *          └─┴─┘   └─┴─┘
  *─────────────神兽出没───────────────/
  */
-abstract class BaseAct<B : ViewBinding> : AppCompatActivity(), IUpdate by UpdateDelegate, ActivityBinding<B> by ActivityBindingDelegate() {
+abstract class BaseAct<VB : ViewBinding> : AppCompatActivity(), IUpdate by UpdateDelegate, ActivityBinding<VB> by ActivityBindingDelegate() {
 
     private lateinit var onBackInvokedCallback: OnBackInvokedCallback
     private var isForcePortrait = true

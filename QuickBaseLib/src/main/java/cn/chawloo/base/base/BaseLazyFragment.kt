@@ -2,6 +2,7 @@ package cn.chawloo.base.base
 
 import androidx.annotation.LayoutRes
 import androidx.databinding.ViewDataBinding
+import androidx.viewbinding.ViewBinding
 
 /**
  * Fragment懒加载基类（不包含业务）
@@ -26,7 +27,7 @@ import androidx.databinding.ViewDataBinding
  *          └─┴─┘   └─┴─┘
  *─────────────神兽出没───────────────/
  */
-abstract class BaseLazyFragment<B : ViewDataBinding>(@LayoutRes layoutId: Int) : BaseFragment<B>(layoutId) {
+abstract class BaseLazyFragment<VB : ViewBinding>(@LayoutRes layoutId: Int) : BaseFragment<VB>(layoutId) {
     private var isLoaded = false
     override fun initialize() {
         onClick()
