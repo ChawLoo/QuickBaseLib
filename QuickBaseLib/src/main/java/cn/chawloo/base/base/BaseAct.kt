@@ -16,8 +16,8 @@ import cn.chawloo.base.delegate.IUpdate
 import cn.chawloo.base.delegate.UpdateDelegate
 import cn.chawloo.base.router.Router
 import cn.chawloo.base.utils.DeviceUtils
-import com.dylanc.viewbinding.base.ActivityBinding
-import com.dylanc.viewbinding.base.ActivityBindingDelegate
+import cn.chawloo.base.viewbinding.ActivityBinding
+import cn.chawloo.base.viewbinding.ActivityBindingDelegate
 import com.gyf.immersionbar.ktx.immersionBar
 import me.jessyan.autosize.AutoSizeCompat
 
