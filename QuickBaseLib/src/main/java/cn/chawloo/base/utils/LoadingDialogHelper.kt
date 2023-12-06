@@ -1,11 +1,10 @@
 package cn.chawloo.base.utils
 
 import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.ViewDataBinding
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.LifecycleOwner
-import cn.chawloo.base.base.BaseFragment
 import cn.chawloo.base.ext.lifecycleOwner
 import cn.chawloo.base.popup.LoadingDialog
 import com.safframework.log.L
@@ -61,7 +60,7 @@ object LoadingDialogHelper {
     }
 
     @Synchronized
-    fun <B : ViewDataBinding> BaseFragment<B>.showLoading(msg: String = "") {
+    fun Fragment.showLoading(msg: String = "") {
         this.lifecycle.addObserver(object : LifecycleEventObserver {
             override fun onStateChanged(source: LifecycleOwner, event: Lifecycle.Event) {
                 if (event == Lifecycle.Event.ON_DESTROY) {
@@ -108,7 +107,7 @@ object LoadingDialogHelper {
     }
 
     @Synchronized
-    fun <B : ViewDataBinding> BaseFragment<B>.hideLoading() {
+    fun Fragment.hideLoading() {
         dialogQueen[this]?.run {
             countQueen[this@hideLoading]?.takeIf { it > 0 }?.run {
                 countQueen[this@hideLoading] = this - 1

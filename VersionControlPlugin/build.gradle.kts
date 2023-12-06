@@ -79,7 +79,7 @@ catalog {
         library("retrofit", "com.squareup.retrofit2", "retrofit").version("2.9.0")
         library("okhttp", "com.squareup.okhttp3", "okhttp").version("4.11.0")
         library("net", "com.github.liangjingkanji", "Net").version("3.6.4")
-        library("brv", "com.github.liangjingkanji", "BRV").version("1.5.6")
+        library("brv", "com.github.liangjingkanji", "BRV").version("1.5.7")
 
         library("chucker", "com.github.chuckerteam.chucker", "library").version("4.0.0")
 
@@ -170,7 +170,7 @@ publishing {
         create<MavenPublication>("maven") {
             groupId = "io.github.chawloo"
             artifactId = "VersionControlPlugin"
-            version = "1.4.7"
+            version = "1.4.8"
             from(components["versionCatalog"])
             pom {
                 name.set("VersionControlPlugin")
