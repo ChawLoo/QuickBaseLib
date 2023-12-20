@@ -79,7 +79,7 @@ catalog {
         library("retrofit", "com.squareup.retrofit2", "retrofit").version("2.9.0")
         library("okhttp", "com.squareup.okhttp3", "okhttp").version("4.11.0")
         library("net", "com.github.liangjingkanji", "Net").version("3.6.4")
-        library("brv", "com.github.liangjingkanji", "BRV").version("1.5.7")
+        library("brv", "com.github.liangjingkanji", "BRV").version("1.5.8")
 
         library("chucker", "com.github.chuckerteam.chucker", "library").version("4.0.0")
 
@@ -104,7 +104,7 @@ catalog {
         library("immersionbar-ktx", "com.geyifeng.immersionbar", "immersionbar-ktx").version("3.2.2")
         bundle("immersionbar", listOf("immersionbar", "immersionbar-ktx"))
 
-        version("pictureSelector", "v3.11.1")
+        version("pictureSelector", "v3.11.2")
         library("pictureSelector", "io.github.lucksiege", "pictureselector").versionRef("pictureSelector")
         library("pictureSelector-compress", "io.github.lucksiege", "compress").versionRef("pictureSelector")
         library("pictureSelector-ucrop", "io.github.lucksiege", "ucrop").versionRef("pictureSelector")
@@ -170,7 +170,7 @@ publishing {
         create<MavenPublication>("maven") {
             groupId = "io.github.chawloo"
             artifactId = "VersionControlPlugin"
-            version = "1.4.8"
+            version = "1.4.9"
             from(components["versionCatalog"])
             pom {
                 name.set("VersionControlPlugin")
