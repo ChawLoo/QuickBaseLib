@@ -84,7 +84,6 @@ catalog {
         library("chucker", "com.github.chuckerteam.chucker", "library").version("4.0.0")
 
         library("kotlinx-serialization-json", "org.jetbrains.kotlinx", "kotlinx-serialization-json").version("1.6.1")
-        library("jodatime", "joda-time", "joda-time").version("2.12.5")
         library("crashReport", "com.tencent.bugly", "crashreport").version("4.1.9.2")
         library("basePopup", "io.github.razerdp", "BasePopup").version("3.2.1")
         library("mmkv", "com.tencent", "mmkv-static").version("1.3.1")
@@ -170,7 +169,7 @@ publishing {
         create<MavenPublication>("maven") {
             groupId = "io.github.chawloo"
             artifactId = "VersionControlPlugin"
-            version = "1.4.9"
+            version = "1.5.0"
             from(components["versionCatalog"])
             pom {
                 name.set("VersionControlPlugin")

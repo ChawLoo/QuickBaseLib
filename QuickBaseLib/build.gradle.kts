@@ -38,7 +38,6 @@ dependencies {
     api(libs.material)
     api(libs.kotlinx.serialization.json)
     api(libs.brv)
-    api(libs.jodatime)
     api(libs.therouter)
     api(libs.androidautosize)
     api(libs.basePopup)
@@ -49,7 +48,6 @@ dependencies {
     api(libs.xPermission)
     api(libs.mmkv)
     api(libs.viewbinding.ktx)
-    api(libs.jodatime)
     api(libs.wechat.sdk.android.without.mta)
     api(libs.wheelView)
     api(libs.x5webview)
@@ -93,7 +91,7 @@ publishing {
         create<MavenPublication>("maven") {
             groupId = "io.github.chawloo"
             artifactId = "QuickBaseLib"
-            version = "1.4.9"
+            version = "1.5.0"
             artifact("$buildDir/outputs/aar/${project.name}-release.aar")
             artifact(androidSourcesJar)
             pom {
