@@ -84,7 +84,7 @@ catalog {
         library("chucker", "com.github.chuckerteam.chucker", "library").version("4.0.0")
 
         library("kotlinx-serialization-json", "org.jetbrains.kotlinx", "kotlinx-serialization-json").version("1.6.1")
-        library("crashReport", "com.tencent.bugly", "crashreport").version("4.1.9.2")
+        library("crashReport", "com.tencent.bugly", "crashreport").version("4.1.9.3")
         library("basePopup", "io.github.razerdp", "BasePopup").version("3.2.1")
         library("mmkv", "com.tencent", "mmkv-static").version("1.3.1")
         library("xPermission", "com.github.getActivity", "XXPermissions").version("18.5")
