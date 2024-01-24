@@ -19,14 +19,14 @@ dependencyResolutionManagement {
         google()
         maven(url = "https://jitpack.io")
     }
+    val version = "1.5.1-beta4"
     versionCatalogs {
         create("libs") {
-            from("io.github.chawloo:VersionControlPlugin:1.5.0")
-            library("base","io.github.chawloo","QuickBaseLib").version("1.5.0")
+            from("io.github.chawloo:VersionControlPlugin:${version}")
+            library("base", "io.github.chawloo", "QuickBaseLib").version(version)
         }
     }
 }
 rootProject.name = "QuickBaseLib"
 include(":app")
 include(":QuickBaseLib")
-include(":VersionControlPlugin")

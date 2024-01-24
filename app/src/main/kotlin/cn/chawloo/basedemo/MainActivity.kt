@@ -16,7 +16,7 @@ class MainActivity : BaseAct<ActivityMainBinding>() {
     }
 
     override fun initialize() {
-        binding.btnShowToast.doClick {
+        vb.btnShowToast.doClick {
             val loading = LoadingDialog(this@MainActivity)
             lifecycleScope.launch {
                 loading.show()

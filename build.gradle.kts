@@ -8,6 +8,8 @@ plugins {
     alias(libs.plugins.ksp) apply false
     alias(libs.plugins.therouter) apply false
 }
+val ver: String get() = "1.5.1-beta4".also { println("当前插件版本为：${it}") }
+extra["version"] = ver
 
 task<Delete>("clean") {
     group = "build"

@@ -5,6 +5,16 @@ plugins {
     id("therouter")
 }
 android {
+    signingConfigs {
+        create("release") {
+            storeFile = file("./QuickBaseLib")
+            storePassword = "ChawLoo0827"
+            keyAlias = "QuickBaseLib"
+            keyPassword = "ChawLoo0827"
+            enableV1Signing = true
+            enableV2Signing = true
+        }
+    }
     compileSdk = libs.versions.compileSdk.get().toInt()
 
     defaultConfig {
@@ -19,7 +29,9 @@ android {
 
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
+            isDebuggable = true
+            signingConfig = signingConfigs.getByName("release")
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
