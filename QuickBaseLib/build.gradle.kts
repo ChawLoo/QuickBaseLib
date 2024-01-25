@@ -74,7 +74,7 @@ catalog {
         version("compileSdk", "34")
         version("buildToolsVersion", "34.0.0")
         version("compileSdkPreview", "UpsideDownCake")
-        version("kotlin", "1.9.20")
+        version("kotlin", "1.9.22")
         version("gradleVer", "8.2.1")
 
         plugin("android-application", "com.android.application").versionRef("gradleVer")
@@ -83,7 +83,7 @@ catalog {
         plugin("kotlin-kapt", "org.jetbrains.kotlin.kapt").versionRef("kotlin")
         plugin("kotlin-parcelize", "org.jetbrains.kotlin.plugin.parcelize").versionRef("kotlin")
         plugin("kotlin-serialization", "org.jetbrains.kotlin.plugin.serialization").versionRef("kotlin")
-        plugin("ksp", "com.google.devtools.ksp").version("1.9.20-1.0.14")
+        plugin("ksp", "com.google.devtools.ksp").version("1.9.22-1.0.17")
 
 
         library("stdlib-jdk7", "org.jetbrains.kotlin", "kotlin-stdlib-jdk7").versionRef("kotlin")
@@ -104,7 +104,7 @@ catalog {
 
 
 
-        version("activity", "1.8.1")
+        version("activity", "1.8.2")
         library("core-ktx", "androidx.core", "core-ktx").version("1.12.0")
         library("appcompat", "androidx.appcompat", "appcompat").version("1.6.1")
         library("multidex", "androidx.multidex", "multidex").version("2.0.1")
@@ -139,16 +139,16 @@ catalog {
         library("androidautosize", "com.github.JessYanCoding", "AndroidAutoSize").version("v1.2.1")
         library("material", "com.google.android.material", "material").version("1.9.0")
         library("retrofit", "com.squareup.retrofit2", "retrofit").version("2.9.0")
-        library("okhttp", "com.squareup.okhttp3", "okhttp").version("4.11.0")
+        library("okhttp", "com.squareup.okhttp3", "okhttp").version("4.12.0")
         library("net", "com.github.liangjingkanji", "Net").version("3.6.4")
         library("brv", "com.github.liangjingkanji", "BRV").version("1.5.8")
 
         library("chucker", "com.github.chuckerteam.chucker", "library").version("4.0.0")
 
-        library("kotlinx-serialization-json", "org.jetbrains.kotlinx", "kotlinx-serialization-json").version("1.6.1")
+        library("kotlinx-serialization-json", "org.jetbrains.kotlinx", "kotlinx-serialization-json").version("1.6.2")
         library("crashReport", "com.tencent.bugly", "crashreport").version("4.1.9.3")
         library("basePopup", "io.github.razerdp", "BasePopup").version("3.2.1")
-        library("mmkv", "com.tencent", "mmkv-static").version("1.3.1")
+        library("mmkv", "com.tencent", "mmkv-static").version("1.3.2")
         library("xPermission", "com.github.getActivity", "XXPermissions").version("18.5")
         library("wheelView", "com.github.zyyoona7.WheelPicker", "wheelview").version("2.0.7")
         library("toast", "com.github.getActivity", "Toaster").version("12.6")
@@ -156,7 +156,7 @@ catalog {
         library("banner", "io.github.youth5201314", "banner").version("2.2.2")
         library("flexbox", "com.google.android.flexbox", "flexbox").version("3.0.0")
 
-        version("therouter", "1.2.2-rc2")
+        version("therouter", "1.2.2-rc5")
         library("therouter", "cn.therouter", "router").versionRef("therouter")
         library("therouter-apt", "cn.therouter", "apt").versionRef("therouter")
         plugin("therouter", "cn.therouter.agp8").versionRef("therouter")
@@ -205,7 +205,7 @@ catalog {
 
         library("accompanist-systemuicontroller", "com.google.accompanist", "accompanist-systemuicontroller").version("0.32.0")
 
-        library("navigation-compose", "androidx.navigation", "navigation-compose").version("2.7.5")
+        library("navigation-compose", "androidx.navigation", "navigation-compose").version("2.7.6")
         library("constraintlayout-compose", "androidx.constraintlayout", "constraintlayout-compose").version("1.0.1")
         library("activity-compose", "androidx.activity", "activity-compose").versionRef("activity")
 
