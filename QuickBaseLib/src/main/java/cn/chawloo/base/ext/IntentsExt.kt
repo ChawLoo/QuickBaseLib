@@ -6,7 +6,10 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.os.Parcelable
 import androidx.core.os.bundleOf
+import cn.chawloo.base.base.BUNDLE_NAME
+import cn.chawloo.base.utils.DeviceUtils
 
 /**
  * TODO
@@ -97,4 +100,19 @@ fun Intent.singleTop(): Intent = addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
 
 fun Intent.grantReadUriPermission(): Intent = apply {
     addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+}
+
+fun Intent?.bundleExtra(key: String = BUNDLE_NAME): Bundle? = this?.getBundleExtra(key)
+fun Intent?.boolExtra(key: String, default: Boolean = false): Boolean = this?.getBooleanExtra(key, default) ?: default
+fun Intent?.longExtra(key: String, default: Long = 0): Long = this?.getLongExtra(key, default) ?: default
+fun Intent?.intExtra(key: String, default: Int = 0): Int = this?.getIntExtra(key, default) ?: default
+fun Intent?.stringExtra(key: String, default: String = ""): String = this?.getStringExtra(key) ?: default
+
+@Suppress("DEPRECATION")
+inline fun <reified T : Parcelable> Intent?.parcelableExtra(key: String): T? {
+    return if (DeviceUtils.isLatestT()) {
+        this?.getParcelableExtra(key, T::class.java)
+    } else {
+        this?.getParcelableExtra(key)
+    }
 }

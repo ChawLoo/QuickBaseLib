@@ -75,7 +75,7 @@ catalog {
         version("buildToolsVersion", "34.0.0")
         version("compileSdkPreview", "UpsideDownCake")
         version("kotlin", "1.9.22")
-        version("gradleVer", "8.2.1")
+        version("gradleVer", "8.2.2")
 
         plugin("android-application", "com.android.application").versionRef("gradleVer")
         plugin("android-library", "com.android.library").versionRef("gradleVer")
