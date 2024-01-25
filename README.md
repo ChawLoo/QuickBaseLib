@@ -33,7 +33,7 @@ enableFeaturePreview("VERSION_CATALOGS")
 dependencyResolutionManagement {
     versionCatalogs {
     	libs {
-            from("io.github.chawloo:VersionControlPlugin:1.1.12")
+            from("io.github.chawloo:VersionControlPlugin:1.5.1-RC1")
         }
     }
 }
@@ -45,7 +45,7 @@ enableFeaturePreview("VERSION_CATALOGS")
 dependencyResolutionManagement {
     versionCatalogs {
         create("libs") {
-            from("io.github.chawloo:VersionControlPlugin:1.1.12")
+            from("io.github.chawloo:VersionControlPlugin:1.5.1-RC1")
         }
     }
 }
