@@ -75,7 +75,7 @@ catalog {
         version("buildToolsVersion", "34.0.0")
         version("compileSdkPreview", "UpsideDownCake")
         version("kotlin", "1.9.22")
-        version("gradleVer", "8.2.2")
+        version("gradleVer", "8.3.0")
 
         plugin("android-application", "com.android.application").versionRef("gradleVer")
         plugin("android-library", "com.android.library").versionRef("gradleVer")
@@ -194,7 +194,7 @@ catalog {
         library("compose-coil", "io.coil-kt", "coil-compose").versionRef("coil")
         bundle("coil", listOf("coil", "coil-gif"))
 
-        library("androidx-compose-bom", "androidx.compose", "compose-bom").version("2023.10.01")
+        library("androidx-compose-bom", "androidx.compose", "compose-bom").version("2024.02.00")
         library("compose-material", "androidx.compose.material", "material").withoutVersion()
         library("compose-material3", "androidx.compose.material3", "material3").version("1.1.2")
         library("compose-ui", "androidx.compose.ui", "ui").withoutVersion()

@@ -22,7 +22,7 @@ dependencyResolutionManagement {
     versionCatalogs {
         create("libs") {
             from(files("QuickBaseLib/build/version-catalog/libs.versions.toml"))
-            library("base", "io.github.chawloo", "QuickBaseLib").version("1.5.1-RC4")
+            library("base", "io.github.chawloo", "QuickBaseLib").version("1.5.3")
         }
     }
 }
