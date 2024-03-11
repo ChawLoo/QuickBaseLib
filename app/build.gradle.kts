@@ -55,4 +55,12 @@ dependencies {
     testImplementation(libs.junit)
     api(libs.therouter)
     ksp(libs.therouter.apt)
+
+    val composeBom = platform(libs.androidx.compose.bom)
+    api(composeBom)
+    androidTestApi(composeBom)
+    api(libs.bundles.compose.library)
+    debugApi(libs.compose.ui.tooling)
+
+
 }

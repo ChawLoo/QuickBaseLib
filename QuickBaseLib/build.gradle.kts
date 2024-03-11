@@ -194,14 +194,17 @@ catalog {
         library("compose-coil", "io.coil-kt", "coil-compose").versionRef("coil")
         bundle("coil", listOf("coil", "coil-gif"))
 
-        library("androidx-compose-bom", "androidx.compose", "compose-bom").version("2024.02.00")
+        library("androidx-compose-bom", "androidx.compose", "compose-bom").version("2024.02.02")
+        // Material Design 3
+        library("compose-material3", "androidx.compose.material3", "material3").withoutVersion()
+        // or Material Design 2
         library("compose-material", "androidx.compose.material", "material").withoutVersion()
-        library("compose-material3", "androidx.compose.material3", "material3").version("1.1.2")
+        // or only import the main APIs for the underlying toolkit systems,
+        // such as input and measurement/layout
         library("compose-ui", "androidx.compose.ui", "ui").withoutVersion()
         library("compose-ui-tooling-preview", "androidx.compose.ui", "ui-tooling-preview").withoutVersion()
         library("compose-runtime-livedata", "androidx.compose.runtime", "runtime-livedata").withoutVersion()
         library("compose-ui-tooling", "androidx.compose.ui", "ui-tooling").withoutVersion()
-
 
         library("accompanist-systemuicontroller", "com.google.accompanist", "accompanist-systemuicontroller").version("0.32.0")
 
