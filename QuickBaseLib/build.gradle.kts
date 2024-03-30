@@ -75,7 +75,7 @@ catalog {
         version("buildToolsVersion", "34.0.0")
         version("compileSdkPreview", "UpsideDownCake")
         version("kotlin", "1.9.22")
-        version("gradleVer", "8.3.0")
+        version("gradleVer", "8.3.1")
 
         plugin("android-application", "com.android.application").versionRef("gradleVer")
         plugin("android-library", "com.android.library").versionRef("gradleVer")
@@ -110,7 +110,7 @@ catalog {
         library("multidex", "androidx.multidex", "multidex").version("2.0.1")
         library("activity-ktx", "androidx.activity", "activity-ktx").versionRef("activity")
         library("fragment-ktx", "androidx.fragment", "fragment-ktx").version("1.6.2")
-        library("annotation", "androidx.annotation", "annotation").version("1.7.0")
+        library("annotation", "androidx.annotation", "annotation").version("1.7.1")
         library("constraintlayout", "androidx.constraintlayout", "constraintlayout").version("2.1.4")
         library("recyclerview", "androidx.recyclerview", "recyclerview").version("1.3.2")
         library("splashscreen", "androidx.core", "core-splashscreen").version("1.0.1")
@@ -194,7 +194,7 @@ catalog {
         library("compose-coil", "io.coil-kt", "coil-compose").versionRef("coil")
         bundle("coil", listOf("coil", "coil-gif"))
 
-        library("androidx-compose-bom", "androidx.compose", "compose-bom").version("2024.02.02")
+        library("androidx-compose-bom", "androidx.compose", "compose-bom").version("2024.03.00")
         // Material Design 3
         library("compose-material3", "androidx.compose.material3", "material3").withoutVersion()
         // or Material Design 2
@@ -208,7 +208,7 @@ catalog {
 
         library("accompanist-systemuicontroller", "com.google.accompanist", "accompanist-systemuicontroller").version("0.32.0")
 
-        library("navigation-compose", "androidx.navigation", "navigation-compose").version("2.7.6")
+        library("navigation-compose", "androidx.navigation", "navigation-compose").version("2.7.7")
         library("constraintlayout-compose", "androidx.constraintlayout", "constraintlayout-compose").version("1.0.1")
         library("activity-compose", "androidx.activity", "activity-compose").versionRef("activity")
 
