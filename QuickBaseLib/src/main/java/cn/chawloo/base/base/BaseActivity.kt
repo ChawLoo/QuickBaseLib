@@ -1,5 +1,6 @@
 package cn.chawloo.base.base
 
+import android.app.Activity
 import android.content.pm.ActivityInfo
 import android.content.res.Resources
 import android.content.res.TypedArray
@@ -94,7 +95,11 @@ abstract class BaseActivity : AppCompatActivity(), IUpdate by UpdateDelegate {
      */
     open fun backPressed() {
         println("触发返回键拦截了")
-        overridePendingTransition(R.anim.anim_activity_slide_left_in, R.anim.anim_activity_slide_right_out)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
+            overridePendingTransition(Activity.OVERRIDE_TRANSITION_CLOSE, R.anim.anim_activity_slide_left_in, R.anim.anim_activity_slide_right_out)
+        } else {
+            overridePendingTransition(R.anim.anim_activity_slide_left_in, R.anim.anim_activity_slide_right_out)
+        }
         finish()
     }
 

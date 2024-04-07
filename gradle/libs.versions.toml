@@ -7,31 +7,31 @@ format.version = "1.1"
 [versions]
 activity = "1.8.2"
 buildToolsVersion = "34.0.0"
-coil = "2.5.0"
+coil = "2.6.0"
 compileSdk = "34"
 compileSdkPreview = "UpsideDownCake"
-coroutines = "1.7.3"
+coroutines = "1.8.0"
 gradleVer = "8.3.1"
-kotlin = "1.9.22"
+immersionbar = "3.2.2"
+kotlin = "1.9.23"
 minSdk = "26"
 pictureSelector = "v3.11.2"
 room = "2.6.1"
 saf-log = "2.6.9"
 targetSdk = "34"
-therouter = "1.2.2-rc5"
+therouter = "1.2.2"
 
 [libraries]
 accompanist-systemuicontroller = {group = "com.google.accompanist", name = "accompanist-systemuicontroller", version = "0.32.0" }
 activity-compose = {group = "androidx.activity", name = "activity-compose", version.ref = "activity" }
 activity-ktx = {group = "androidx.activity", name = "activity-ktx", version.ref = "activity" }
 androidautosize = {group = "com.github.JessYanCoding", name = "AndroidAutoSize", version = "v1.2.1" }
-androidx-compose-bom = {group = "androidx.compose", name = "compose-bom", version = "2024.02.02" }
-annotation = {group = "androidx.annotation", name = "annotation", version = "1.7.0" }
+androidx-compose-bom = {group = "androidx.compose", name = "compose-bom", version = "2024.04.00" }
+annotation = {group = "androidx.annotation", name = "annotation", version = "1.7.1" }
 appcompat = {group = "androidx.appcompat", name = "appcompat", version = "1.6.1" }
 banner = {group = "io.github.youth5201314", name = "banner", version = "2.2.2" }
 basePopup = {group = "io.github.razerdp", name = "BasePopup", version = "3.2.1" }
 brv = {group = "com.github.liangjingkanji", name = "BRV", version = "1.5.8" }
-chucker = {group = "com.github.chuckerteam.chucker", name = "library", version = "4.0.0" }
 coil = {group = "io.coil-kt", name = "coil", version.ref = "coil" }
 coil-gif = {group = "io.coil-kt", name = "coil-gif", version.ref = "coil" }
 compose-coil = {group = "io.coil-kt", name = "coil-compose", version.ref = "coil" }
@@ -47,16 +47,16 @@ core-ktx = {group = "androidx.core", name = "core-ktx", version = "1.12.0" }
 crashReport = {group = "com.tencent.bugly", name = "crashreport", version = "4.1.9.3" }
 flexbox = {group = "com.google.android.flexbox", name = "flexbox", version = "3.0.0" }
 fragment-ktx = {group = "androidx.fragment", name = "fragment-ktx", version = "1.6.2" }
-immersionbar = {group = "com.geyifeng.immersionbar", name = "immersionbar", version = "3.2.2" }
-immersionbar-ktx = {group = "com.geyifeng.immersionbar", name = "immersionbar-ktx", version = "3.2.2" }
+immersionbar = {group = "com.geyifeng.immersionbar", name = "immersionbar", version.ref = "immersionbar" }
+immersionbar-ktx = {group = "com.geyifeng.immersionbar", name = "immersionbar-ktx", version.ref = "immersionbar" }
 junit = {group = "junit", name = "junit", version = "4.13.2" }
 kotlinx-coroutines-android = {group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "coroutines" }
 kotlinx-coroutines-core = {group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "coroutines" }
-kotlinx-serialization-json = {group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version = "1.6.2" }
-material = {group = "com.google.android.material", name = "material", version = "1.9.0" }
-mmkv = {group = "com.tencent", name = "mmkv-static", version = "1.3.2" }
+kotlinx-serialization-json = {group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version = "1.6.3" }
+material = {group = "com.google.android.material", name = "material", version = "1.11.0" }
+mmkv = {group = "com.tencent", name = "mmkv", version = "1.3.4" }
 multidex = {group = "androidx.multidex", name = "multidex", version = "2.0.1" }
-navigation-compose = {group = "androidx.navigation", name = "navigation-compose", version = "2.7.6" }
+navigation-compose = {group = "androidx.navigation", name = "navigation-compose", version = "2.7.7" }
 net = {group = "com.github.liangjingkanji", name = "Net", version = "3.6.4" }
 okhttp = {group = "com.squareup.okhttp3", name = "okhttp", version = "4.12.0" }
 pictureSelector = {group = "io.github.lucksiege", name = "pictureselector", version.ref = "pictureSelector" }
@@ -65,7 +65,6 @@ pictureSelector-compress = {group = "io.github.lucksiege", name = "compress", ve
 pictureSelector-ucrop = {group = "io.github.lucksiege", name = "ucrop", version.ref = "pictureSelector" }
 recyclerview = {group = "androidx.recyclerview", name = "recyclerview", version = "1.3.2" }
 reflect = {group = "org.jetbrains.kotlin", name = "kotlin-reflect", version.ref = "kotlin" }
-retrofit = {group = "com.squareup.retrofit2", name = "retrofit", version = "2.9.0" }
 room-compiler = {group = "androidx.room", name = "room-compiler", version.ref = "room" }
 room-ktx = {group = "androidx.room", name = "room-ktx", version.ref = "room" }
 room-runtime = {group = "androidx.room", name = "room-runtime", version.ref = "room" }
@@ -81,7 +80,7 @@ viewbinding-ktx = {group = "com.github.DylanCaiCoding.ViewBindingKTX", name = "v
 wechat-sdk-android-without-mta = {group = "com.tencent.mm.opensdk", name = "wechat-sdk-android-without-mta", version = "6.8.0" }
 wheelView = {group = "com.github.zyyoona7.WheelPicker", name = "wheelview", version = "2.0.7" }
 x5webview = {group = "com.tencent.tbs", name = "tbssdk", version = "44286" }
-xPermission = {group = "com.github.getActivity", name = "XXPermissions", version = "18.5" }
+xPermission = {group = "com.github.getActivity", name = "XXPermissions", version = "18.62" }
 
 [bundles]
 androidx = ["core-ktx", "appcompat", "multidex", "activity-ktx", "fragment-ktx", "constraintlayout", "recyclerview", "splashscreen"]
@@ -101,6 +100,6 @@ kotlin-android = {id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-kapt = {id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
 kotlin-parcelize = {id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlin" }
 kotlin-serialization = {id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
-ksp = {id = "com.google.devtools.ksp", version = "1.9.22-1.0.17" }
+ksp = {id = "com.google.devtools.ksp", version = "1.9.23-1.0.20" }
 therouter = {id = "cn.therouter.agp8", version.ref = "therouter" }
 
