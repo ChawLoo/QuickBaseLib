@@ -21,8 +21,7 @@ dependencyResolutionManagement {
     }
     versionCatalogs {
         create("libs") {
-//            from("io.github.chawloo:VersionControlPlugin:1.5.4")
-            library("base", "io.github.chawloo", "QuickBaseLib").version("1.5.4")
+            library("base", "io.github.chawloo", "QuickBaseLib").version("1.6.0")
         }
     }
 }

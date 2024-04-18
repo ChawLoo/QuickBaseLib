@@ -35,33 +35,22 @@ android {
 }
 
 dependencies {
-    api(libs.material)
-    api(libs.kotlinx.serialization.json)
-    api(libs.brv)
-    api(libs.therouter)
-    api(libs.androidautosize)
-    api(libs.basePopup)
-    api(libs.toast)
-    api(libs.okhttp)
-    api(libs.net)
-    api(libs.xPermission)
-    api(libs.mmkv)
-    api(libs.viewbinding.ktx)
-    api(libs.wechat.sdk.android.without.mta)
-    api(libs.wheelView)
-    api(libs.x5webview)
-    api(libs.banner)
-    api(libs.flexbox)
+    implementation(libs.material)
+    implementation(libs.kotlinx.serialization.json)
+    implementation(libs.brv)
+    implementation(libs.therouter)
+    implementation(libs.androidautosize)
+    implementation(libs.basePopup)
+    implementation(libs.toast)
+    implementation(libs.net)
+    implementation(libs.mmkv)
+    implementation(libs.viewbinding.ktx)
 
 
-    api(libs.bundles.androidx)
-    api(libs.bundles.room)
-    api(libs.bundles.kotlin)
-    api(libs.bundles.coroutines)
-    api(libs.bundles.pictureSelector)
-    api(libs.bundles.coil)
-    api(libs.bundles.saf.log)
-    api(libs.bundles.immersionbar)
+    implementation(libs.bundles.androidx)
+    implementation(libs.bundles.kotlin)
+    implementation(libs.bundles.saf.log)
+    implementation(libs.bundles.immersionbar)
 
     testImplementation(libs.junit)
 }
@@ -74,7 +63,7 @@ catalog {
         version("buildToolsVersion", "34.0.0")
         version("compileSdkPreview", "UpsideDownCake")
         version("kotlin", "1.9.23")
-        version("gradleVer", "8.3.1")
+        version("gradleVer", "8.3.2")
 
         plugin("android-application", "com.android.application").versionRef("gradleVer")
         plugin("android-library", "com.android.library").versionRef("gradleVer")
@@ -82,7 +71,9 @@ catalog {
         plugin("kotlin-kapt", "org.jetbrains.kotlin.kapt").versionRef("kotlin")
         plugin("kotlin-parcelize", "org.jetbrains.kotlin.plugin.parcelize").versionRef("kotlin")
         plugin("kotlin-serialization", "org.jetbrains.kotlin.plugin.serialization").versionRef("kotlin")
-        plugin("ksp", "com.google.devtools.ksp").version("1.9.23-1.0.20")
+
+        version("ksp", "1.9.23-1.0.20")
+        plugin("ksp", "com.google.devtools.ksp").versionRef("ksp")
 
 
         library("stdlib-jdk7", "org.jetbrains.kotlin", "kotlin-stdlib-jdk7").versionRef("kotlin")
@@ -104,15 +95,23 @@ catalog {
 
 
         version("activity", "1.8.2")
-        library("core-ktx", "androidx.core", "core-ktx").version("1.12.0")
-        library("appcompat", "androidx.appcompat", "appcompat").version("1.6.1")
-        library("multidex", "androidx.multidex", "multidex").version("2.0.1")
         library("activity-ktx", "androidx.activity", "activity-ktx").versionRef("activity")
-        library("fragment-ktx", "androidx.fragment", "fragment-ktx").version("1.6.2")
-        library("annotation", "androidx.annotation", "annotation").version("1.7.1")
-        library("constraintlayout", "androidx.constraintlayout", "constraintlayout").version("2.1.4")
-        library("recyclerview", "androidx.recyclerview", "recyclerview").version("1.3.2")
-        library("splashscreen", "androidx.core", "core-splashscreen").version("1.0.1")
+        version("core-ktx", "1.12.0")
+        library("core-ktx", "androidx.core", "core-ktx").versionRef("core-ktx")
+        version("appcompat", "1.6.1")
+        library("appcompat", "androidx.appcompat", "appcompat").versionRef("appcompat")
+        version("multidex", "2.0.1")
+        library("multidex", "androidx.multidex", "multidex").versionRef("multidex")
+        version("fragment", "1.6.2")
+        library("fragment-ktx", "androidx.fragment", "fragment-ktx").versionRef("fragment")
+        version("annotation", "1.7.1")
+        library("annotation", "androidx.annotation", "annotation").versionRef("annotation")
+        version("constraintlayout", "2.1.4")
+        library("constraintlayout", "androidx.constraintlayout", "constraintlayout").versionRef("constraintlayout")
+        version("recyclerview", "1.3.2")
+        library("recyclerview", "androidx.recyclerview", "recyclerview").versionRef("recyclerview")
+        version("splashscreen","1.0.1")
+        library("splashscreen", "androidx.core", "core-splashscreen").versionRef("splashscreen")
 
         bundle(
             "androidx", listOf(
@@ -150,7 +149,7 @@ catalog {
         library("wheelView", "com.github.zyyoona7.WheelPicker", "wheelview").version("2.0.7")
         library("toast", "com.github.getActivity", "Toaster").version("12.6")
         library("viewbinding-ktx", "com.github.DylanCaiCoding.ViewBindingKTX", "viewbinding-ktx").version("2.1.0")
-        library("banner", "io.github.youth5201314", "banner").version("2.2.2")
+        library("banner", "io.github.youth5201314", "banner").version("2.2.3")
         library("flexbox", "com.google.android.flexbox", "flexbox").version("3.0.0")
 
         version("therouter", "1.2.2")
@@ -158,7 +157,7 @@ catalog {
         library("therouter-apt", "cn.therouter", "apt").versionRef("therouter")
         plugin("therouter", "cn.therouter.agp8").versionRef("therouter")
 
-        version("immersionbar","3.2.2")
+        version("immersionbar", "3.2.2")
         library("immersionbar", "com.geyifeng.immersionbar", "immersionbar").versionRef("immersionbar")
         library("immersionbar-ktx", "com.geyifeng.immersionbar", "immersionbar-ktx").versionRef("immersionbar")
         bundle("immersionbar", listOf("immersionbar", "immersionbar-ktx"))
