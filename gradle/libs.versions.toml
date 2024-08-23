@@ -5,20 +5,20 @@
 format.version = "1.1"
 
 [versions]
-activity = "1.8.2"
-annotation = "1.7.1"
-appcompat = "1.6.1"
+activity = "1.9.1"
+annotation = "1.8.2"
+appcompat = "1.7.0"
 buildToolsVersion = "34.0.0"
 coil = "2.6.0"
 compileSdk = "34"
 compileSdkPreview = "UpsideDownCake"
 constraintlayout = "2.1.4"
-core-ktx = "1.12.0"
-coroutines = "1.8.0"
-fragment = "1.6.2"
-gradleVer = "8.3.2"
+core-ktx = "1.13.1"
+coroutines = "1.8.1"
+fragment = "1.8.2"
+gradleVer = "8.5.2"
 immersionbar = "3.2.2"
-kotlin = "1.9.23"
+kotlin = "2.0.0"
 ksp = "1.9.23-1.0.20"
 minSdk = "26"
 multidex = "2.0.1"
@@ -31,16 +31,16 @@ targetSdk = "34"
 therouter = "1.2.2"
 
 [libraries]
-accompanist-systemuicontroller = {group = "com.google.accompanist", name = "accompanist-systemuicontroller", version = "0.32.0" }
+accompanist-systemuicontroller = {group = "com.google.accompanist", name = "accompanist-systemuicontroller", version = "0.34.0" }
 activity-compose = {group = "androidx.activity", name = "activity-compose", version.ref = "activity" }
 activity-ktx = {group = "androidx.activity", name = "activity-ktx", version.ref = "activity" }
 androidautosize = {group = "com.github.JessYanCoding", name = "AndroidAutoSize", version = "v1.2.1" }
-androidx-compose-bom = {group = "androidx.compose", name = "compose-bom", version = "2024.04.00" }
+androidx-compose-bom = {group = "androidx.compose", name = "compose-bom", version = "2024.08.00" }
 annotation = {group = "androidx.annotation", name = "annotation", version.ref = "annotation" }
 appcompat = {group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 banner = {group = "io.github.youth5201314", name = "banner", version = "2.2.3" }
 basePopup = {group = "io.github.razerdp", name = "BasePopup", version = "3.2.1" }
-brv = {group = "com.github.liangjingkanji", name = "BRV", version = "1.5.8" }
+brv = {group = "com.github.liangjingkanji", name = "BRV", version = "1.6.0" }
 coil = {group = "io.coil-kt", name = "coil", version.ref = "coil" }
 coil-gif = {group = "io.coil-kt", name = "coil-gif", version.ref = "coil" }
 compose-coil = {group = "io.coil-kt", name = "coil-compose", version.ref = "coil" }
@@ -62,8 +62,8 @@ junit = {group = "junit", name = "junit", version = "4.13.2" }
 kotlinx-coroutines-android = {group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "coroutines" }
 kotlinx-coroutines-core = {group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "coroutines" }
 kotlinx-serialization-json = {group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version = "1.6.3" }
-material = {group = "com.google.android.material", name = "material", version = "1.11.0" }
-mmkv = {group = "com.tencent", name = "mmkv", version = "1.3.4" }
+material = {group = "com.google.android.material", name = "material", version = "1.12.0" }
+mmkv = {group = "com.tencent", name = "mmkv", version = "1.3.5" }
 multidex = {group = "androidx.multidex", name = "multidex", version.ref = "multidex" }
 navigation-compose = {group = "androidx.navigation", name = "navigation-compose", version = "2.7.7" }
 net = {group = "com.github.liangjingkanji", name = "Net", version = "3.6.4" }
