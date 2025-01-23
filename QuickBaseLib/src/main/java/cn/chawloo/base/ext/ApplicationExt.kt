@@ -51,9 +51,9 @@ inline val packageInfo: PackageInfo
 inline val appName: String
     get() = application.applicationInfo.loadLabel(application.packageManager).toString()
 
-inline val appIcon: Drawable get() = packageInfo.applicationInfo.loadIcon(application.packageManager)
+inline val appIcon: Drawable? get() = packageInfo.applicationInfo?.loadIcon(application.packageManager)
 
-inline val appVersionName: String get() = packageInfo.versionName
+inline val appVersionName: String get() = packageInfo.versionName ?: "1.0"
 
 inline val appVersionCode: Long get() = PackageInfoCompat.getLongVersionCode(packageInfo)
 

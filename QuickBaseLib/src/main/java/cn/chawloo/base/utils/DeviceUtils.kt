@@ -33,32 +33,6 @@ import java.util.UUID
  *─────────────神兽出没───────────────/
  */
 object DeviceUtils {
-    /**
-     * 获取版本名称
-     */
-    fun Context.versionName(): String = try {
-        packageManager.getPackageInfo(packageName, 0).versionName
-    } catch (e: Exception) {
-        e.printStackTrace()
-        "1.0"
-    }
-
-    /**
-     * 获取版本名称
-     */
-    fun Context.versionCode(): Long {
-        return try {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-                packageManager.getPackageInfo(packageName, 0).longVersionCode
-            } else {
-                packageManager.getPackageInfo(packageName, 0).versionCode.toLong()
-            }
-        } catch (e: Exception) {
-            e.printStackTrace()
-            1
-        }
-    }
-
     fun Context.getDeviceId(): String {
         val sb = StringBuilder()
         val androidId = this.androidId()
